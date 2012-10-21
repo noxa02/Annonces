@@ -1,0 +1,10 @@
+<?php 
+	if(isset($_SESSION['user'])):
+		if(session_destroy()):
+			header('Location:'.PUBLIC_PATH_LOCATION.'/index.php');
+			exit();
+		endif;
+	else:
+		header('Location:'.PUBLIC_PATH_LOCATION.'/index.php');
+		exit();
+	endif;
