@@ -56,7 +56,7 @@ endif;
     <body>
         <div class="navbar navbar-fixed-top">
             <div class="navbar-inner">
-                <div class="container">
+                <div class="container-fluid">
                     <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
@@ -73,15 +73,33 @@ endif;
                 </div>
             </div>
         </div>
-        <div class="container-fluid">
-            <div class="row-fluid">
-                <div class="span2">
-                    ....
-                </div>
-                <div class="span10">
-                    ...
-                </div>
-            </div>
+        <div class="container">
+          <div class="page-header">...</div>
+          <div class="row">
+            <div class="span12">...</div>
+          </div>
+          <div class="row">
+            <div class="span2">...</div>
+            <div class="span2">...</div>
+            <div class="span2">...</div>
+            <div class="span2">...</div>
+            <div class="span2">...</div>
+            <div class="span2">...</div>
+            <div class="span2">...</div>
+            <div class="span2">...</div>
+            <div class="span2">...</div>
+            <div class="span2">...</div>
+            <div class="span2">...</div>
+            <div class="span2">...</div>
+          </div>
+          <div class="row">
+            <div class="span4">...</div>
+            <div class="span8">...</div>
+          </div>
+          <div class="row">
+            <div class="span9">...</div>
+            <div class="span3">...</div>
+          </div>
         </div>
 
         <script type="text/javascript" src="js/jquery.1.8.1.js"></script>
