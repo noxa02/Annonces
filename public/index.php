@@ -7,7 +7,7 @@ if (isset($_SESSION['user'])):
     //$_user->setUserData($_SESSION['user']['login']);
     //$_user->checkUserData($_SESSION['user']['login'], $_SESSION['user']['password']);
 endif;
-// test
+
 // Dispatcher MVC
 try {
     if (isset($_GET['p'])):
