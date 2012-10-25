@@ -74,7 +74,15 @@ endif;
             </div>
         </div>
         <div class="container">
-          <div class="page-header">...</div>
+          <div class="page-header">
+              Titre
+          </div>
+            <form class="form-search">
+                <div class="input-prepend">
+                  <button class="btn btn-primary" type="submit">Recherche</button>
+                  <input type="text" class="search-query">
+                </div>
+            </form>
           <div class="row">
             <div class="span12">...</div>
           </div>
