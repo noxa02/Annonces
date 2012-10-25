@@ -6,9 +6,8 @@
 	$PARAM_dbname = 'projet_1'; 
 	$PARAM_password = 'root'; 
 
-	define("APPLICATION_PATH", dirname(__FILE__).'/application');
-	define("PUBLIC_PATH", dirname(__FILE__).'/public');
-	define("APPLICATION_PATH_LOCATION", '/Projets/Sites/Exercice_1/application');
-	define("PUBLIC_PATH_LOCATION", '/Projets/Sites/Exercice_1/public');
-	define("UPLOAD_FILES",dirname(__FILE__).'/data/upload');
-	define("AVATAR_PATH",'data/upload/avatar');
+	define('PATH_ROOT', dirname(__FILE__));
+
+	define("APPLICATION_PATH", PATH_ROOT . '/application');
+	define("PUBLIC_PATH", PATH_ROOT . '/public');
+	define("UPLOAD_FILES", PATH_ROOT . '/data/upload');
