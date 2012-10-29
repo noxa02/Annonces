@@ -42,6 +42,21 @@
 #header {
     padding: 70px 0 0 0;
 }
+#wrap
+{
+    min-height: 550px;  
+}
+#main
+{
+    overflow:auto;
+    padding-bottom: 20px;
+}
+.footer 
+{
+    position: relative;
+	clear:both;
+    color: #333;
+} 
 .nav-top-custom .nav > li > a {
     padding: 25px 10px 25px 10px;
 }
