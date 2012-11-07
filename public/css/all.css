@@ -84,3 +84,13 @@
 .nav-top-custom a.brand {
     padding-top: 25px;
 }
+.form-connexion {
+    margin: 14px 0 0 20px;
+}
+.form-connexion button[type="submit"] {
+    margin: 0 0 0 0;
+}
+
+.form-connexion .checkbox {
+    display: inline;
+}

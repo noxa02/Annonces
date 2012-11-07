@@ -1,38 +1,42 @@
 <?php
 session_start();
 
-require_once '../settings.php';
+include_once '../settings.php';
+include_once APPLICATION_PATH.'/includes/template.php';
+include_once APPLICATION_PATH.'/includes/autoloader.php';
+include_once APPLICATION_PATH.'/dispatcher_mvc.php';
 
-if (isset($_SESSION['user'])):
+
+if (isset($_SESSION['user'])) {
     //$_user->setUserData($_SESSION['user']['login']);
     //$_user->checkUserData($_SESSION['user']['login'], $_SESSION['user']['password']);
-endif;
-
-include_once APPLICATION_PATH.'/dispatcher_mvc.php';
+}
 ?>
 
 <!DOCTYPE html>
 <html lang="fr">
-<?php 
-    if($layouts_['header'] == true): 
-        include APPLICATION_PATH . '/layouts/header.layout.php';
-    endif; 
-?>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+        <title>Petites Annonces</title>
+        <!-- Bootstrap -->
+        <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
+        <link href="css/all.css" rel="stylesheet">
+    </head>
     <body>
     <?php 
-        if($layouts_['main_nav'] == true): 
+        if(isset($layouts_['main_nav']) && $layouts_['main_nav'] == true) {
             include APPLICATION_PATH . '/layouts/main_nav.layout.php';
-        endif; 
+        }
     ?>
         <?php 
-            if(isset($view_)):
+            if(isset($view_)) {
                 include $view_;
-            endif;
+            }
         ?>
-     <?php 
-        if($layouts_['footer'] == true): 
+     <?php
+        if(isset($layouts_['footer']) && $layouts_['footer'] == true) {
             include APPLICATION_PATH . '/layouts/footer.layout.php';
-        endif; 
+        }
     ?>
     </body>
 </html>
