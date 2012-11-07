@@ -6,7 +6,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>P
             </a>
-            <a class="brand" href="#"> A Simply Trade </a>
+            <a class="brand" href="#"> A Simply Trade  <img src="images/logo_64x64.png" class="img-polaroid"> </a>
             <div class="nav-collapse">
                 <ul class="nav">
                     <li class="active"><a href="#"> Accueil </a></li>                  
