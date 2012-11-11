@@ -2,7 +2,7 @@
     <div id="main" class="container clear-top">
         <header id="header">
          <div class="container">
-           <h1>A Simply Trade</h1>
+           <h1>A Simple Trade</h1>
            <p class="lead">
                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent rhoncus feugiat facilisis. 
                Morbi vulputate condimentum interdum. In in lorem congue felis eleifend feugiat vel et libero.

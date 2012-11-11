@@ -1,15 +1,13 @@
 <?php
 session_start();
 
-include_once '../settings.php';
-include_once APPLICATION_PATH.'/includes/template.php';
-include_once APPLICATION_PATH.'/includes/autoloader.php';
-include_once APPLICATION_PATH.'/dispatcher_mvc.php';
+require '../application/bootstrap.php';
 
+$member_ = new Member();
 
-if (isset($_SESSION['user'])) {
-    //$_user->setUserData($_SESSION['user']['login']);
-    //$_user->checkUserData($_SESSION['user']['login'], $_SESSION['user']['password']);
+if (isset($_SESSION['user'])) { 
+    $member_->setUserData($_SESSION['user']['login']);
+    $member_->checkUserData($_SESSION['user']['login'], $_SESSION['user']['password']);
 }
 ?>
 
