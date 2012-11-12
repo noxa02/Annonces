@@ -1,7 +1,7 @@
 <?php
     
 try {
-    if(isset($_GET['m'])) {//method
+    if(isset($_GET['m'])) { //method
         
         $controller = $view = strtolower($_GET['m']);
         $extController = '.controller.php';
@@ -10,7 +10,7 @@ try {
         if(isset($_GET['a'])) { //action
   
             $action = $_GET['a'];
-
+            
             if(is_readable(APPLICATION_PATH . '/controllers/' . ucfirst($controller) . '/' . $action . $extController)) {  
 
                 $controller_ = APPLICATION_PATH . '/controllers/' . ucfirst($controller) . '/' . $action . $extController;
@@ -42,7 +42,7 @@ try {
 
 if(isset($controller_)) {
     
-    include($controller_); 
+    include_once($controller_); 
 } else {        
     
     $view_ = APPLICATION_PATH . '/views/common/404.view.php';

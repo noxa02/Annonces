@@ -1,9 +1,9 @@
 <?php
-    
+    session_start();
     /** 
      * Includes 
      */
-    include_once '../settings.php';
+    include_once '../config.php';
     
     if (DEVELOPMENT_ENVIRONMENT == true) {
         error_reporting(E_ALL);

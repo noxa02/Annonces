@@ -7,7 +7,7 @@ class PDO_Mysql
 	private static $_instancePDO = null;
 
 	public static function init() {
-		self::$_instancePDO  =  new PDO('mysql:host='.$GLOBALS['PARAM_host'].';port='.$GLOBALS['PARAM_port'].';dbname='.$GLOBALS['PARAM_dbname'], $GLOBALS['PARAM_user'], $GLOBALS['PARAM_password'], array(PDO::ATTR_PERSISTENT => true, PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES \'UTF8\''));
+		self::$_instancePDO  =  new PDO('mysql:host='.DB_HOST.';port='.DB_PORT.';dbname='.DB_NAME, DB_USER, DB_PASSWORD, array(PDO::ATTR_PERSISTENT => true, PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES \'UTF8\''));
 	}
 
 	public static function getInstance() {

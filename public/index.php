@@ -1,6 +1,4 @@
 <?php
-session_start();
-
 require '../application/bootstrap.php';
 
 $member_ = new Member();

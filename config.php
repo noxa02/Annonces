@@ -4,19 +4,20 @@
      */
     define ('DEVELOPMENT_ENVIRONMENT',true);
     /**
-     * Global variables to connect the database.
+     * Constants variables to connect the database.
      */
-    global $PARAM_host,$PARAM_port,$PARAM_user,$PARAM_dbname,$PARAM_password; 
-    $PARAM_host = 'localhost';
-    $PARAM_port = '8889';
-    $PARAM_user = 'root'; 
-    $PARAM_dbname = 'asimpletrade'; 
-    $PARAM_password = 'root'; 
+
+    define('DB_HOST', 'localhost');
+    define('DB_PORT', '8889');
+    define('DB_USER', 'root');
+    define('DB_NAME', 'asimpletrade');
+    define('DB_PASSWORD', 'root');
 
     /**
      * Constants to multiples path.
      */
+    define('DS', DIRECTORY_SEPARATOR);
     define('PATH_ROOT', dirname(__FILE__));
-    define("APPLICATION_PATH", PATH_ROOT . '/application');
-    define("PUBLIC_PATH", PATH_ROOT . '/public');
-    define("UPLOAD_FILES", PATH_ROOT . '/data/upload');
+    define("APPLICATION_PATH", PATH_ROOT . DS .'application');
+    define("PUBLIC_PATH", PATH_ROOT . DS .'public');
+    define("UPLOAD_FILES", PATH_ROOT . DS .'data'. DS .'upload');
