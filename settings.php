@@ -1,5 +1,9 @@
 <?php 
     /**
+     * Set the environment application
+     */
+    define ('DEVELOPMENT_ENVIRONMENT',true);
+    /**
      * Global variables to connect the database.
      */
     global $PARAM_host,$PARAM_port,$PARAM_user,$PARAM_dbname,$PARAM_password; 
