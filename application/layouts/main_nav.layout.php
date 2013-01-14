@@ -10,7 +10,7 @@
             <div class="nav-collapse">
                 <ul class="nav">
                     <li class="active"><a href="#"> Accueil </a></li>                  
-                    <li><a href="#announces">Annonces</a></li>
+                    <li><a href="#about">A Propos</a></li>
                     <li><a href="?p=inscription">Inscription</a></li>
                     <li><a href="#contact">Contact</a></li>
                     <?php // Manage Member Account [Need to be connected] ?>
