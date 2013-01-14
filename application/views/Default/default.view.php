@@ -4,19 +4,18 @@
          <div class="container">
            <h1>A Simple Trade</h1>
            <p class="lead">
-               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent rhoncus feugiat facilisis. 
-               Morbi vulputate condimentum interdum. In in lorem congue felis eleifend feugiat vel et libero.
+               A simple trade est un site d'annonce particulier. Il propose à ses utilisateurs un système de troc, permettant d'échanger 
+               des biens contre d'autres biens ou des services et vice-versa. 
            </p>
          </div>
         </header>
         <div class="container">
             <div class="page-header">
-                <h2>Titre secondaire</h2>
+                <h2>Dernières annonces</h2>
             </div>
             <div class="row">
               <div class="span12">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent rhoncus feugiat facilisis. 
-                Morbi vulputate condimentum interdum. In in lorem congue felis eleifend feugiat vel et libero.
+                Retrouvez les dix dernières annonces mise en ligne ! 
                 <div class="row-fluid padding-top15">
                     <ul class="thumbnails">
                       <li class="span3 thumbnail">
