@@ -6,7 +6,7 @@ try {
         $controller = $view = strtolower($_GET['m']);
         $extController = '.controller.php';
         $extView = '.view.php';
-        
+
         if(isset($_GET['a'])) { //action
   
             $action = $_GET['a'];
@@ -14,11 +14,13 @@ try {
             if(is_readable(APPLICATION_PATH . '/controllers/' . ucfirst($controller) . '/' . $action . $extController)) {  
 
                 $controller_ = APPLICATION_PATH . '/controllers/' . ucfirst($controller) . '/' . $action . $extController;
+              
             }
  
             if(is_readable(APPLICATION_PATH . '/views/' . ucfirst($view) . '/' . $action . $extView)) { 
 
                 $view_ = APPLICATION_PATH . '/views/' . ucfirst($view) . '/' . $action . $extView;
+               
             }
             
         }
@@ -27,6 +29,7 @@ try {
             
         $controller_ = APPLICATION_PATH . '/controllers/default/default.controller.php';
         $view_ = APPLICATION_PATH . '/views/default/default.view.php';
+        var_dump($controller_);
         
 //        if(!is_readable($controller_)
 //                && !is_readable($view_)):
