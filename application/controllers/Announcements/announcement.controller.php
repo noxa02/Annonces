@@ -13,7 +13,7 @@
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_URL, $url);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-    curl_setopt($ch, CURLOPT_USERAGENT, 'Client TEST Annonces');
+    curl_setopt($ch, CURLOPT_USERAGENT, 'Client TEST Annonces - annonce');
     $result = utf8_decode(curl_exec ($ch));
     curl_close($ch);
 
@@ -28,7 +28,7 @@
     $chC = curl_init();
     curl_setopt($chC, CURLOPT_URL, $urlC);
     curl_setopt($chC, CURLOPT_RETURNTRANSFER, 1);
-    curl_setopt($chC, CURLOPT_USERAGENT, 'Client TEST Annonces');
+    curl_setopt($chC, CURLOPT_USERAGENT, 'Client TEST Annonces - commentaires');
     $resultC = utf8_decode(curl_exec ($chC));
     curl_close($chC);
 
