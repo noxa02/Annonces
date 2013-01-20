@@ -95,16 +95,30 @@
     display: inline;
 }
 
-
-.thumbnail.right-caption > img {
-    float: left;
-    margin-right: 9px;
+.clear{
+    clear: both;
 }
 
-.thumbnail.right-caption {
-    float: left;
+.description{
+    margin-left: 290px;
 }
 
-.thumbnail.right-caption > .caption {
-    padding: 4px;
+.date{
+    font-weight: bold;
+    float: right;
+    padding-top: 15px;
+}
+
+.lienAnnonce{
+    font-weight: bold;
+    float: right;
+    padding-top: 30px;
+}
+
+.court{
+    width: 300px;
+}
+
+.align-right{
+    float: right;
 }
