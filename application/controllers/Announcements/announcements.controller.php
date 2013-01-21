@@ -6,7 +6,8 @@
       'footer'      => true,
     );
     
-    $url = 'http://rest.asimpletrade.fr:8086/announcements';
+    //$url = 'http://rest.asimpletrade.fr:8086/announcements';
+    $url = 'http://localhost/REST_ANNONCE/web/announcements';
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_URL, $url);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);

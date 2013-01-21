@@ -9,10 +9,10 @@
             <a class="brand" href="#"> A Simple Trade  <img src="images/logo_64x64.png" class="img-polaroid"> </a>
             <div class="nav-collapse">
                 <ul class="nav">
-                    <li class="active" id="homeLink"><a href="#"> Accueil </a></li>                  
-                    <li id="announceLink"><a href="?m=announcements&a=announcements" >Annonces</a></li>
-                    <li id="registerLink"><a href="?m=Member&a=register" >Inscription</a></li>
-                    <li id="contactLink"><a href="#contact" >Contact</a></li>
+                    <li <?php if((isset($_GET['a'])) && strtolower($_GET['a']) == "default"){echo 'class="active"';}?>><a href="?m=Default&a=Default"> Accueil </a></li>                  
+                    <li <?php if((isset($_GET['a'])) && strtolower($_GET['a']) == "announcements"){echo 'class="active"';}?>><a href="?m=announcements&a=announcements" >Annonces</a></li>
+                    <li <?php if((isset($_GET['a'])) && strtolower($_GET['a']) == "register"){echo 'class="active"';}?>><a href="?m=Member&a=register" >Inscription</a></li>
+                    <li <?php if((isset($_GET['a'])) && strtolower($_GET['a']) == "contact"){echo 'class="active"';}?>><a href="?m=Common&a=contact" >Contact</a></li>
                     <?php // Manage Member Account [Need to be connected] ?>
                     <?php if(isset($_SESSION['user']) && !empty($_SESSION['user'])) { ?>
                     <li class="divider-vertical"></li>                          

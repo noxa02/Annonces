@@ -29,7 +29,6 @@ try {
             
         $controller_ = APPLICATION_PATH . '/controllers/default/default.controller.php';
         $view_ = APPLICATION_PATH . '/views/default/default.view.php';
-        var_dump($controller_);
         
 //        if(!is_readable($controller_)
 //                && !is_readable($view_)):

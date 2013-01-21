@@ -15,7 +15,6 @@ if (isset($_SESSION['user'])) {
         <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
         <link rel="icon" type="image/png" href="images/favicon24x24.png" />
         <script type="text/javascript" src="js/jquery.1.8.1.js"></script>
-        <script type="text/javascript" src="js/functions.js"></script>
         <title>Petites Annonces</title>
         <!-- Bootstrap -->
         <link href="bootstrap/css/bootstrap.css" rel="stylesheet">

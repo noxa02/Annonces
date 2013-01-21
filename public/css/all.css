@@ -122,3 +122,13 @@
 .align-right{
     float: right;
 }
+
+.formulaire input[type="text"], textarea{
+    display: inline-block;
+}
+
+.formulaire label {
+    display: block;
+    float: left;
+    width: 150px;
+}
