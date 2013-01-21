@@ -9,7 +9,7 @@
         <div class="container"> 
             <div class="row">
                 <div class="span4">
-                    <img src="http://placehold.it/260x180" alt="">
+                    <img src="http://placehold.it/800x600" alt="">
                     <br />
                     <hr class="court"><h4>Description</h4>
                     <?=$announcement->getElementsByTagName('content')->item(0)->nodeValue?>
@@ -31,5 +31,8 @@
                     <a href="#" class="btn btn-warning"><i class="icon-star icon-white"></i>&nbsp;Ajouter aux favoris</a>  
                 </div>
             </div>
-            <br />
+        </div>
+    </div>
+</div>
+
         
