@@ -14,7 +14,7 @@
                         <label>Prénom : </label><input type="text" name="firstname" /><br/>
                         <label>Pseudo : </label><input type="text" name="login" /><br/>
                         <label>Adresse Email : </label><input type="text" name="email" /><br/>
-                        <label>Date de naissance : </label><input type="date" name="birthdate" /><br/>
+                        <label>Date de naissance : </label><input type="date"  name="birthdate" /><br/>
                         <hr><h3 style="text-align:center;">Localisation</h3><hr>
                         <label>Rue : </label><input type="text" name="street" /><br/>
                         <label>CP : </label><input type="text" name="CP" /><br/>
