@@ -29,18 +29,18 @@
                           <p><a href="#" class="btn btn-primary">Action</a> <a href="#" class="btn">Action</a></p>
                         </div>
                       </li>
-                      <li class="span3">
-                        <a href="#" class="thumbnail">
+                      <li class="span3 thumbnail">
+                        <a href="#">
                           <img src="http://placehold.it/260x180" alt="">
                         </a>
                       </li>
-                      <li class="span3">
-                        <a href="#" class="thumbnail">
+                      <li class="span3 thumbnail">
+                        <a href="#">
                           <img src="http://placehold.it/260x180" alt="">
                         </a>
                       </li>
-                      <li class="span3">
-                        <a href="#" class="thumbnail">
+                      <li class="span3 thumbnail">
+                        <a href="#">
                           <img src="http://placehold.it/260x180" alt="">
                         </a>
                       </li>

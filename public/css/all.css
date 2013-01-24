@@ -132,3 +132,14 @@
     float: left;
     width: 150px;
 }
+
+.memberList{
+    text-align: center;
+    font-weight: bold;
+}
+
+.memberList img{
+    text-align: center;
+    display: inline-block;
+    float: none;
+}
