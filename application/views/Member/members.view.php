@@ -18,7 +18,7 @@
                               <br /><?=$member->getElementsByTagName('login')->item(0)->nodeValue?>
                               <br />Localisation
                               <br />Nombre d'annonces postées
-                              <br /><a href="?m=member&amp;a=member&amp;id=1" class="btn btn-primary"><i class="icon-eye-open icon-white"></i>&nbsp;Fiche détaillée</a>
+                              <br /><a href="?m=member&amp;a=member&amp;id=<?=$member->getElementsByTagName('id')->item(0)->nodeValue?>" class="btn btn-primary"><i class="icon-eye-open icon-white"></i>&nbsp;Fiche détaillée</a>
                           </div>
                       </li>
                       <?php endforeach; ?>
