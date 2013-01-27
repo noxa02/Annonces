@@ -30,7 +30,3 @@
         </div>
     </div>
 </footer>
-
-<script type="text/javascript" src="js/jquery.1.8.1.js"></script>
-<script src="bootstrap/js/bootstrap.js"></script>
-<script src="js/main.js"></script>

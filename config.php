@@ -19,5 +19,5 @@
     define('DS', DIRECTORY_SEPARATOR);
     define('PATH_ROOT', dirname(__FILE__));
     define("APPLICATION_PATH", PATH_ROOT . DS .'application');
-    define("PUBLIC_PATH", PATH_ROOT . DS .'public');
-    define("UPLOAD_FILES", PATH_ROOT . DS .'data'. DS .'upload');
+    define("PUBLIC_PATH", PATH_ROOT . DS .'web');
+    define("UPLOAD_FILES", PATH_ROOT . DS .'data'. DS .'web');
