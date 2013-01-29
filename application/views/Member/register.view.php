@@ -13,6 +13,8 @@
                         <label>Nom : </label><input class="span3" type="text" name="name" /><br/>
                         <label>Prénom : </label><input type="text" name="firstname" /><br/>
                         <label>Pseudo : </label><input type="text" name="login" /><br/>
+                        <label>Mot de passe : </label><input type="password" name="password" /><br/>
+                        <label>Mot de passe (Vérif) : </label><input type="password" name="passwordVerif" /><br/>
                         <label>Adresse Email : </label><input type="text" name="email" /><br/>
                         <label>Date de naissance : </label><input type="date"  name="birthdate" /><br/>
                         <hr><h3 style="text-align:center;">Localisation</h3><hr>

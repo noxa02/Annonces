@@ -6,7 +6,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>P
             </a>
-            <a class="brand" href="#"> A Simple Trade  <img src="images/logo_64x64.png" class="img-polaroid"> </a>
+            <a class="brand" href="?m=default&a=default"> A Simple Trade  <img src="images/logo_64x64.png" class="img-polaroid"> </a>
             <div class="nav-collapse">
                 <ul class="nav">
                     <li <?php if((isset($_GET['a'])) && strtolower($_GET['a']) == "default"){echo 'class="active"';}?>><a href="?m=Default&a=Default"> Accueil </a></li>                  
