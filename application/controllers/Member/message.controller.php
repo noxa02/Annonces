@@ -5,14 +5,15 @@
       'connexion'   => true,
       'footer'      => true,
     );
-    
-    $url = 'http://rest.asimpletrade.fr:8086/users';
+    /*
+    $url = 'http://rest.asimpletrade.fr:8086/users/'.$_GET['id'];
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_URL, $url);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-    curl_setopt($ch, CURLOPT_USERAGENT, 'Client web Annonces - members');
+    curl_setopt($ch, CURLOPT_USERAGENT, 'Client web Annonces - member');
     $result = utf8_decode(curl_exec ($ch));
     curl_close($ch);
 
-    $members = new DOMDocument();
-    @$members->loadHTML($result);
+    $member = new DOMDocument();
+    @$member->loadHTML($result);
+     */

@@ -5,7 +5,7 @@
                 <h4>A Simple Trade</h4>
                 <ul>
                     <li><a href="#about">A propos de nous</a></li>
-                    <li><a href="">Contact</a></li>
+                    <li><a href="?m=Common&a=contact">Contact</a></li>
                 </ul>
             </div>
             <div class="span2 offset1">

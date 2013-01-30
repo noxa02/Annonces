@@ -193,3 +193,9 @@ input[type="date"] {
     padding: 0;
     float: left;
 }
+.blue{
+    color: #0088cc;
+}
+.center{
+    text-align: center;
+}
