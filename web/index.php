@@ -9,15 +9,18 @@
         <link href="<?=BASE_URL ?>/bootstrap/css/bootstrap.css" rel="stylesheet">
         <link href="<?=BASE_URL ?>/css/all.css" rel="stylesheet">
         <link href="<?=BASE_URL ?>/css/toastr-1.0.2/toastr.css" rel="stylesheet">
-        <script type="text/javascript" src="<?php print BASE_URL ?>/js/jquery.1.8.1.js"></script>
-        <script type="text/javascript" src="<?php print BASE_URL ?>/js/jquery.base64.js"></script>
-        <script type="text/javascript" src="<?php print BASE_URL ?>/bootstrap/js/bootstrap.js"></script>
-        <script type="text/javascript" src="<?php print BASE_URL ?>/js/toastr-1.0.2/toastr.js"></script>
-        <script type="text/javascript" src="<?php print BASE_URL ?>/js/notifications.js"></script>
-        <script type="text/javascript" src="<?php print BASE_URL ?>/js/date-format.js"></script>
-        <script type="text/javascript" src="<?php print BASE_URL ?>/js/jquery-cookie.js"></script>
-        <script type="text/javascript" src="<?php print BASE_URL ?>/js/main.js"></script>        
-        <script type="text/javascript" src="<?=BASE_URL?>/js/Ajax/announcement.js"></script>
+        <script type="text/javascript" src="<?=BASE_URL?>/js/jquery.1.8.1.js"></script>
+        <script type="text/javascript" src="<?=BASE_URL?>/js/jquery.base64.js"></script>
+        <script type="text/javascript" src="<?=BASE_URL?>/bootstrap/js/bootstrap.js"></script>
+        <script type="text/javascript" src="<?=BASE_URL?>/js/toastr-1.0.2/toastr.js"></script>
+        <script type="text/javascript" src="<?=BASE_URL?>/js/notifications.js"></script>
+        <script type="text/javascript" src="<?=BASE_URL?>/js/date-format.js"></script>
+        <script type="text/javascript" src="<?=BASE_URL?>/js/jquery-cookie.js"></script>
+        <script type="text/javascript" src="<?=BASE_URL?>/js/main.js"></script>
+        <script type="text/javascript" src="<?=BASE_URL?>/js/Ajax/User.js"></script>
+        <script type="text/javascript" src="<?=BASE_URL?>/js/Ajax/Announcement.js"></script>
+        <script type="text/javascript" src="<?=BASE_URL?>/js/Ajax/Search.js"></script>
+        <script type="text/javascript" src="<?=BASE_URL?>/js/Form/UserRegister.js"></script>
     </head>
     <body>
     <?php 

@@ -15,8 +15,7 @@
                     <script type="text/javascript">
                     (function($) {
                         $(function() {
-                            var maPagination = window.maPagination;
-                            maPagination.init(1, "bm94YTAyOm9nYW1lMTc=");
+                            customPagination.init(1, $.cookie('AuthKey'));
                         })
                     })(jQuery);
                     </script>

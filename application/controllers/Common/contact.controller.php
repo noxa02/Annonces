@@ -1,8 +1,8 @@
 <?php
 
-    $layouts = array(
+    $layouts_ = array(
       'header'      => true,
-      'navbar'    => true,
+      'main_nav'    => true,
       'connexion'   => true,
       'footer'      => true,
     );

@@ -18,7 +18,11 @@
 	top: 12px;
 	left: 12px;
 }
-
+.toast-top-center {
+	top: 12px;
+    left: 35%;
+    margin: 0 auto;
+}
 .toast-bottom-right {
 	right: 12px;
 	bottom: 12px;
@@ -47,8 +51,8 @@
 	color: #FFFFFF;
 	margin: 0 0 6px;
 	filter: alpha(opacity=80);
-	-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
-	opacity: 0.8;
+	-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+	opacity: 1;
 	padding: 15px 15px 15px 50px;
 	width: 300px;
 }

@@ -153,9 +153,33 @@
                     message: message,
                     title: title
                 })
-            }
+            },
+            
+            clear = function($toastElement) {
+                var options = getOptions();
+                var $container = $('#' + options.containerId);
+                if ($toastElement && $(':focus', $toastElement).length === 0) {
+                    var removeToast = function() {
+                        if ($toastElement.is(':visible')) {
+                            return;
+                        }
+                        $toastElement.remove();
+                        if ($container.children().length === 0) {
+                            $container.remove();
+                        }
+                    };
+                    $toastElement.fadeOut(10, removeToast);
+                    return;
+                }
+                if ($container.length) {
+                    $container.fadeOut(1, function() {
+                        $container.remove();
+                    });
+                }
+            };
 
         return {
+            clear: clear,
             error: error,
             info: info,
             options: {},

@@ -10,8 +10,8 @@
             <div class="nav-collapse">
                 <ul class="nav">
                     <li class="active"><a href="<?=BASE_URL?>"> Accueil </a></li>                  
-                    <li><a href="<?=BASE_URL?>/announcements/list" >Annonces</a></li>
-                    <li><a href="javascript:void(0)">Inscription</a></li>
+                    <li><a href="<?=BASE_URL?>/announcements/list">Annonces</a></li>
+                    <li><a href="<?=BASE_URL?>/user/register">Inscription</a></li>
                     <li><a href="#contact" >Contact</a></li>
                     <?php if(isset($_SESSION['user']) && !empty($_SESSION['user'])) { ?>
                     <li class="divider-vertical"></li>                          

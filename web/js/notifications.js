@@ -90,5 +90,8 @@ var notification = {
         toastr.options.extendedTimeOut = + $extendedTimeOut;
 
         toastr.warning(message, title, options)     
+    },
+    "clear": function() {
+        toastr.clear();
     }
 }

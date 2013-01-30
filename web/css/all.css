@@ -78,6 +78,15 @@
 .padding-left5 {
     padding-left: 5px;
 }
+.margin-5 {
+    margin: 5px;
+}
+.margin-10 {
+    margin: 10px;
+}
+.inline {
+    display: inline;
+}
 .nav-top-custom .nav {
     margin: 0;
 }
@@ -142,4 +151,45 @@
 /****OTHERS****/
 #AuthKey {
     display: none;
+}
+.center {
+    text-align: center;
+}
+/****USER REGISTRATION FORM****/
+#user-register fieldset {
+    width: 400px;
+    height: auto;
+}
+#user-register .control-label {
+    padding: 0 10px 0 0;
+    text-align: left;
+}
+#user-register .second .control-label {
+    width: 100px;
+}
+#user-register  input[type="text"], textarea, 
+input[type="date"] {
+    display: inline-block;
+}
+/****SEARCH****/
+#main.search {
+    width: 680px;
+    margin: 0;
+    float: right;
+    right: 135px;
+    position: relative;
+    overflow: hidden;
+}
+.block-search {
+    top: 110px;
+    display: block;
+    float: left;
+    position: fixed;
+    padding: 10px;
+}
+.block-search .first-group {
+    width: 190px;
+    margin: 0;
+    padding: 0;
+    float: left;
 }

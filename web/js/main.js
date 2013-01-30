@@ -1,23 +1,22 @@
 (function($) {
     $(function() {
-        window.url = url;
         $('#submit-connexion').click(function(e) {
             e.preventDefault();
+            toastr.clear();
             var username = $('#login-connexion').val();
             var password = $('#password-connexion').val();
             var url = 'http://localhost:8888/projetcs/REST_ANNONCE_V2/web/users/';
-            var AuthKey = base64.encode(username + ':' + password);
-            $.cookie('AuthKey', ""+AuthKey+"");
+            
+            authKey.set(username, password);
             $.ajax({
                 type: "GET",
                 url: url,
                 dataType : 'json',
-                AuthKey : AuthKey,
                 data: {
                   login : username
                 },
                 beforeSend: function (xhr){ 
-                    xhr.setRequestHeader('Authorization', 'Basic '+this.AuthKey); 
+                    xhr.setRequestHeader('Authorization', 'Basic '+authKey.get()); 
                 },
                 statusCode : {
                     401: function (statusCode) {
@@ -41,7 +40,7 @@
                         $timeOut : 5000,
                         $extendedTimeOut : 1000
                     }
-                    //document.cookie = 'AuthKey='+this.AuthKey;
+
                     notification.success(
                     'Connexion réussie !', 
                     'Vous allez être redirigé dans 3 secondes', 
@@ -66,8 +65,9 @@
             });
         });  
     })
-    
-    var url = {
+})(jQuery);
+
+   var url = {
         "current_uri": function(delimiter) {
             var urlParts = window.location.pathname.split( '/' );
             var newPath = '';
@@ -85,4 +85,21 @@
         }
     }
     
-})(jQuery)
+    var authKey = {
+        "get": function() {
+            if(!$.cookie('AuthKey')) {
+                this.set('anonym', 'anonym');
+            }
+            return $.cookie('AuthKey');
+        },
+        "set": function(username, password) {
+            $.cookie('AuthKey', base64.encode(username + ':' + password));
+        },
+        "delete": function() {
+            $.cookie('AuthKey', null);
+            if($.cookie(key)) {
+                return true;
+            }
+            return false;
+        }
+    }
