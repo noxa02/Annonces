@@ -143,3 +143,11 @@
     display: inline-block;
     float: none;
 }
+
+.blue{
+    color: #0088cc;
+}
+
+.center{
+    text-align: center;
+}
