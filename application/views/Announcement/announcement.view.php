@@ -31,9 +31,11 @@
                     <h5><i class="icon-user"></i>Toto</h5>
                     <a href="?m=Member&a=member&id=7" class="btn ">Voir son profil</a>
                     <a href="#" class="btn btn-primary"><i class="icon-pencil icon-white"></i>&nbsp;Contacter</a>
-                    <br /><br />
+                    <div class="padding-button"></div>
                     <a href="#" class="btn btn-success"><i class="icon-eye-open icon-white"></i>&nbsp;Suivre</a>
-                    <hr class="court">
+                    
+                    <hr class="court" />
+                    <h5><i class="icon-user"></i>Annonce</h5>
                     <a href="#" class="btn btn-primary"><i class="icon-plus-sign icon-white"></i>&nbsp;Postuler</a>
                     <a href="#" class="btn btn-warning"><i class="icon-star icon-white"></i>&nbsp;Ajouter aux favoris</a>  
                 </div>

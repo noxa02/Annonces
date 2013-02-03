@@ -87,6 +87,12 @@
 .inline {
     display: inline;
 }
+.inline-block{
+    display: inline-block;
+}
+.float-right{
+    float: right;
+}
 .nav-top-custom .nav {
     margin: 0;
 }
@@ -154,6 +160,9 @@
 }
 .center {
     text-align: center;
+}
+.padding-button{
+    padding-top: 1px;
 }
 /****USER REGISTRATION FORM****/
 #user-register fieldset {

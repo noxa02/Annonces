@@ -17,5 +17,5 @@
     $result = utf8_decode(curl_exec ($ch));
     curl_close($ch);
 
-    $announcement = new DOMDocument();
-    @$announcement->loadHTML($result);
+    $announcements = new DOMDocument();
+    @$announcements->loadHTML($result);

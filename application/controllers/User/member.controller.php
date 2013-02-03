@@ -1,12 +1,12 @@
 <?php 
-    $layouts_ = array(
+    $layouts = array(
       'header'      => true,
-      'main_nav'    => true,
+      'navbar'      => true,
       'connexion'   => true,
       'footer'      => true,
     );
     
-    $url = 'http://rest.asimpletrade.fr:8086/users/'.$_GET['id'];
+    $url = 'http://rest.asimpletrade.fr:8086/users/7';
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_URL, $url);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
