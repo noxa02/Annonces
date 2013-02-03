@@ -153,7 +153,12 @@
     height: 35px;
 }
 #search-panel{
+    background: -moz-linear-gradient(#0d7190,#14b0e1);
+    background: -webkit-linear-gradient(#0d7190,#14b0e1);
+    background: -o-linear-gradient(#0d7190,#14b0e1);
     background: linear-gradient(#0d7190,#14b0e1);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#0d7190, endColorstr=#14b0e1);
+  -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#0d7190, endColorstr=#14b0e1)";
     height:120px;
 }
 #deroule{
