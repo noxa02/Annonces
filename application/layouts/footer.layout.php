@@ -1,4 +1,5 @@
-<footer class="footer" style="background-color:#c2c2c2;">
+<div id="blueLine"></div>
+<footer class="footer" >
     <div class="container" style="margin:0 auto;">
         <div class="row">
             <div class="span2 offset2">

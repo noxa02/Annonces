@@ -1,12 +1,12 @@
-<div class="navbar navbar-fixed-top nav-top-custom">
+<div class="navbar nav-top-custom">
     <div class="navbar-inner">
-        <div class="container-fluid">
+        <div class="container">
             <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </a>
-            <a class="brand" href="<?=BASE_URL?>"> A Simple Trade  <img src="<?=BASE_URL?>/images/logo_64x64.png" class="img-polaroid"> </a>
+            <a class="brand" href="<?=BASE_URL?>"><img src="<?=BASE_URL?>/images/logo_64x64.png" > </a>
             <div class="nav-collapse">
                 <ul class="nav">
                     <li class="active"><a href="<?=BASE_URL?>"> Accueil </a></li>                  
@@ -42,13 +42,50 @@
                     </li>
                     <?php } ?>
                 </ul>
-                <form id="search-bar" class="navbar-search form-search pull-right">
-                    <div class="input-prepend">
-                      <button class="btn btn-primary" type="submit">Recherche <i class="icon-search icon-white"></i></button>
-                      <input type="text" class="search-query">
-                    </div>
-                </form>                        
+                                     
             </div>
         </div>
     </div>
 </div>
+<div id="deroule">
+    <div class="container">
+        <div class="icon-chevron-down icon-white" style="float:left;"></div><p>Rechercher une annonce</p>
+    </div>
+
+</div>
+<div id="search-panel">
+    <div class="container">
+        <form id="search-bar" class="navbar-search form-search">
+              <input type="text" class="search-query">
+              <select>
+                  <option>Objet</option>
+                  <option>Service</option>
+              </select>
+              <select>
+                  <option>01-Ain</option>
+                  <option>02-Aisne</option>
+                  <option>03-Allier</option>
+                  <option>04-Alpes de Haute-Provence</option>
+                  
+              </select>
+              <button class="btn btn-primary" type="submit">Recherche <i class="icon-search icon-white"></i></button>
+        </form>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function(){
+        $("#search-panel").hide();
+        $("#deroule").click(function(){
+            if($(this).next().is(":hidden")){
+			$(this).next().slideDown('slow');
+			$(this).children().children(":first").removeClass("icon-chevron-down").addClass("icon-chevron-up");
+                        $(this).children().children(":last").html("Cacher le volet");
+		} else if($(this).next().is(":visible")) {
+			$(this).next().slideUp('slow');
+			$(this).children().children(":first").removeClass("icon-chevron-up").addClass("icon-chevron-down");
+                        $(this).children().children(":last").html("Rechercher une annonce");
+		}
+        });
+    });
+</script>

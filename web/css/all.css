@@ -40,7 +40,7 @@
 }
 
 #header {
-    padding: 100px 0 0 0;
+    padding: 50px 0 0 0;
 }
 #wrap
 {
@@ -54,11 +54,20 @@
 .footer 
 {
     position: relative;
-	clear:both;
-    color: #333;
+    clear:both;
+    color: #ffffff;
+    background:#111111;
+    border-top:30px solid #0f88ae;
 } 
+.footer a{
+    color:#ffffff;
+}
+.footer ul,li{
+    margin:0;
+    list-style: none;
+}
 .nav-top-custom .nav > li > a {
-    padding: 40px 10px 40px 10px;
+    margin-top:30px;
 }
 .nav-top-custom .divider-vertical {
     height: 99px;
@@ -143,6 +152,14 @@
 #account-user button {
     height: 35px;
 }
+#search-panel{
+    background: linear-gradient(#0d7190,#14b0e1);
+    height:120px;
+}
+#deroule{
+    height:20px;
+    background: #0d7190;
+}
 /****USER-ACCOUNT****/
 #account-user {
     height: 100px;
@@ -207,4 +224,7 @@ input[type="date"] {
 }
 .center{
     text-align: center;
+}
+#deroule p{
+    color: #ffffff;
 }
