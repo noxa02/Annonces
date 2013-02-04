@@ -1,7 +1,7 @@
 <div id="wrap">
     <div id="main" class="container clear-top">
         <header id="header">
-            <h1><img src="images/Mail.ico" />&nbsp;Mes messages privés</h1>
+            <h1><img src="../../public/images/Mail.ico" />&nbsp;Mes messages privés</h1>
         </header>
         <div class="container"> 
             <div class="row">

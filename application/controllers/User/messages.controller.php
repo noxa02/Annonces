@@ -1,10 +1,11 @@
 <?php 
-    $layouts_ = array(
+    $layouts = array(
       'header'      => true,
-      'main_nav'    => true,
+      'navbar'      => true,
       'connexion'   => true,
       'footer'      => true,
     );
+
     /*
     $url = 'http://rest.asimpletrade.fr:8086/users/'.$_GET['id'];
     $ch = curl_init();

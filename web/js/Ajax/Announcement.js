@@ -3,7 +3,8 @@ var customPagination = {
         loading.show();
         $.ajax({
             type: "GET",
-            url: 'http://localhost:8888/projetcs/REST_ANNONCE_V2/web/announcements',
+            //url: 'http://localhost:8888/projetcs/REST_ANNONCE_V2/web/announcements',
+            url: 'http://rest.asimpletrade.fr:8086/announcements/',
             dataType : 'json',
             current_page : current_page,
             data: {
@@ -65,7 +66,8 @@ var customPagination = {
 var announcement = {
     "init": function(data) {
         //var image = this.getPicture(data);
-        var baseUrl = 'http://localhost:8888/projetcs/Annonces/web';
+        //var baseUrl = 'http://localhost:8888/projetcs/Annonces/web';
+        var baseUrl =  'http://rest.asimpletrade.fr:8086/';
         var content = '';
         content += '<li class="thumbnail">';
         content += '    <div class="date">';
@@ -91,7 +93,9 @@ var announcement = {
 
         $.ajax({
             type: "GET",
-            url: 'http://localhost:8888/projetcs/REST_ANNONCE_V2/web/announcements',
+            //url: 'http://localhost:8888/projetcs/REST_ANNONCE_V2/web/announcements',
+            url: 'http://rest.asimpletrade.fr:8086/announcements/',
+            
             dataType : 'json',
             async: false, 
             beforeSend: function (xhr){ 
@@ -108,7 +112,9 @@ var announcement = {
         var content = '';
         $.ajax({
             type: "GET",
-            url: 'http://localhost:8888/projetcs/REST_ANNONCE_V2/web/pictures/'
+            //url: 'http://localhost:8888/projetcs/REST_ANNONCE_V2/web/pictures/'
+            //      +'?id_announcement='+data.id+'&width=260&height=80&limit=1',
+            url: 'http://rest.asimpletrade.fr:8086/pictures/'
                   +'?id_announcement='+data.id+'&width=260&height=80&limit=1',
             dataType : 'json',
             async: false,
@@ -118,7 +124,8 @@ var announcement = {
             success: function(data) {
                 if(data != null) {
                     var data = data[0];
-                    var src = 'http://localhost:8888/projetcs/REST_ANNONCE_V2';
+                    //var src = 'http://localhost:8888/projetcs/REST_ANNONCE_V2';
+                    var src = 'http://rest.asimpletrade.fr:8086';
                     src += '/upload/announcement/'+data.width+'x'+data.height;
                     src += '/'+data.title+'.'+data.extension;
                     content += '<img src="'+src+'" alt="'+data.alternative+'">';
@@ -134,7 +141,8 @@ var announcement = {
     },
     "search-page": function(data) {
         var image = this.getPicture(data);
-        var baseUrl = 'http://localhost:8888/projetcs/Annonces/web';
+        //var baseUrl = 'http://localhost:8888/projetcs/Annonces/web';
+        var baseUrl = 'http://rest.asimpletrade.fr:8086/';
         var content = '';
         content += '<li class="thumbnail">';
         content += '    <div class="date">';
@@ -159,7 +167,8 @@ var announcement = {
 
 var loading = {
     "show": function() {
-        $('#loading').html("<img src='http://localhost:8888/projetcs/Annonces/web/images/ajax-loader.gif'/>").fadeIn('fast');
+        //$('#loading').html("<img src='http://localhost:8888/projetcs/Annonces/web/images/ajax-loader.gif'/>").fadeIn('fast');
+        $('#loading').html("<img src='http://rest.asimpletrade.fr:8086/images/ajax-loader.gif'/>").fadeIn('fast');
     }, 
     "hide": function () {
         $('#loading').fadeOut();
