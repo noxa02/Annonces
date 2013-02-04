@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <div class="navbar nav-top-custom">
     <div class="navbar-inner">
         <div class="container">
@@ -42,8 +41,7 @@
                     ?>                       
                     </li>
                     <?php } ?>
-                </ul>
-                                     
+                   </ul>
             </div>
         </div>
     </div>
@@ -90,63 +88,3 @@
         });
     });
 </script>
-=======
-<div class="navbar navbar-fixed-top nav-top-custom">
-    <div class="navbar-inner">
-        <div class="container-fluid">
-            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </a>
-            <a class="brand" href="<?=BASE_URL?>"> A Simple Trade  <img src="<?=BASE_URL?>/images/logo_64x64.png" class="img-polaroid"> </a>
-            <div class="nav-collapse">
-                <ul class="nav">
-                    <li <?php if(strstr(strstr($_SERVER['REQUEST_URI'], "web", false), "/", false) == "/"){ echo 'class="active"';} ?>><a href="<?=BASE_URL?>"> Accueil </a></li>                  
-                    <li <?php if(strstr(strstr($_SERVER['REQUEST_URI'], "announcements", false), "/", true) == "announcements"){ echo 'class="active"';} ?>><a href="<?=BASE_URL?>/announcements/list">Annonces</a></li>
-                    <li <?php if(strstr(strstr($_SERVER['REQUEST_URI'], "user", false), "/", true) == "user"){ echo 'class="active"';} ?>><a href="<?=BASE_URL?>/user/register">Inscription</a></li>
-                    <li <?php if(strstr(strstr($_SERVER['REQUEST_URI'], "Common", false), "/", true) == "Common"){ echo 'class="active"';} ?>><a href="<?=BASE_URL?>/Common/contact" >Contact</a></li>
-                    <?php if(isset($_SESSION['user']) && !empty($_SESSION['user'])) { ?>
-                    <li class="divider-vertical"></li>                          
-                    <ul id="account-user" class="nav">
-                        <div id="user-picture" class="pull-left">
-                            <img class="thumbnail" src="http://placehold.it/50x50" alt="" width="50" height="50">
-                        </div>
-                        <div class="btn-group pull-left">
-                          <a class="btn" href="#"><i class="icon-user"></i> Mon Compte </a>
-                          <a class="btn dropdown-toggle" data-toggle="dropdown" href=""><span class="caret"></span></a>
-                          <ul class="dropdown-menu">
-                            <li><a href="javascript:void(0)"><i class="icon-pencil"></i> Modifier mon compte </a></li
-                            <li><a href="javascript:void(0)"><i class="icon-th-list"></i> Mes annonces </a></li>
-                            <li><a href="javascript:void(0)"><i class="icon-th-list"></i> Mes messages </a></li>
-                            <li><a href="javascript:void(0)"><i class="icon-eye-open"></i> Mes trocs </a></li>
-                            <li class="divider"></li>
-                            <li><a href="<?=BASE_URL?>/user/logout"><i class="icon-off"></i> Se deconnecter </a></li>
-                          </ul>
-                        </div>
-                    </ul>
-                    <li class="divider-vertical"></li>
-                    <?php } else { ?>
-                    <li>
-                    <?php
-                        if(isset($layouts['connexion']) && $layouts['connexion']) {
-                            include APPLICATION_PATH . '/layouts/connexion.layout.php';
-                        }
-                    ?>                       
-                    </li>
-                    <?php } ?>
-                </ul>
-                <form id="search-bar" class="navbar-search form-search pull-right">
-                    <div class="input-prepend">
-                      <button class="btn btn-primary" type="submit">Recherche <i class="icon-search icon-white"></i></button>
-                      <input type="text" class="search-query">
-                    </div>
-                </form>                        
-            </div>
-        </div>
-    </div>
-</div>
-<?php
-echo strstr(strstr($_SERVER['REQUEST_URI'], "web", false), "/", false);
-?>
->>>>>>> Clean Announcement list + modify URL navigation (active class)
