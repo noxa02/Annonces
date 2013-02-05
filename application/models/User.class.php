@@ -71,31 +71,31 @@ class User {
     public 
     function getPortable()
     {
-            return $this->_portable;
+        return $this->_portable;
     }
     
     public 
     function getSubscriptionDate()
     {
-            return $this->_subscriptionDate;
+        return $this->_subscriptionDate;
     }
     
     public 
     function getHash()
     {
-            return $this->_hash;
+        return $this->_hash;
     }
     
     public 
     function getNewsletter()
     {
-            return $this->_newsletter;
+        return $this->_newsletter;
     }
     
     public 
     function getRole()
     {
-            return $this->_role;
+        return $this->_role;
     }
 
     /**
@@ -105,25 +105,25 @@ class User {
     public 
     function setId($_id) 
     {
-            $this->_id = $_id;
+        $this->_id = $_id;
     }
 
     public 
     function setName($_name)
     {
-            $this->_name = $_name;
+        $this->_name = $_name;
     }
 
     public 
     function setFirstname($_firstname)
     {
-            $this->_firstname = $_firstname;
+        $this->_firstname = $_firstname;
     }
 
     public 
     function setLogin($_login)
     {
-            $this->_login = $_login;
+        $this->_login = $_login;
     }
 
     public 
@@ -139,25 +139,25 @@ class User {
     public 
     function setMail($mail_)
     {
-            $this->_mail = $mail_;
+        $this->_mail = $mail_;
     }
     
     public 
     function setAddress($address_)
     {
-            $this->_address = $address_;
+        $this->_address = $address_;
     }
     
     public 
     function setPhone($phone_)
     {
-            $this->_phone = $phone_;
+        $this->_phone = $phone_;
     }
     
     public 
     function setPortable($portable_)
     {
-            $this->_portable = $portable_;
+        $this->_portable = $portable_;
     }
     
     public 
@@ -169,27 +169,26 @@ class User {
     public 
     function setHash($hash_)
     {
-            $this->_hash = $hash_;
+        $this->_hash = $hash_;
     }
     
     public 
     function setNewsletter($newsletter_)
     {
-            $this->_newsletter = $newsletter_;
+        $this->_newsletter = $newsletter_;
     }
     
     public 
     function setRole($role_)
     {
-            $this->_role = $role_;
+        $this->_role = $role_;
     }
-
+    
   	public 
     function setUserData($data) 
     {
 		Hydrate::init($data); 
 	}
-    
     
 /**
  * Méthodes diverses
@@ -215,5 +214,80 @@ class User {
     function destroyCookies() 
     {
         unset($_COOKIE['AuthKey']);
+    }
+    
+    public
+    function getFollowers() 
+    {
+        $curl = new Curl_Custom();
+        $curl->setUrl('http://localhost:8888/projetcs/REST_ANNONCE_V2/web/users/'.$this->getId().'/followers');
+        $curl->setAuthToken($_COOKIE['AuthKey']);
+        $curl->setHeaders($curl->getAuthToken());
+        $curl->curlGetRequest();
+
+        return $curl->getData();
+    }
+    
+    public
+    function getComments($conditions = null) 
+    {
+        $url = 'http://localhost:8888/projetcs/REST_ANNONCE_V2/web/comments/?id_user='.$this->getId();
+        if(!is_null($conditions)) 
+            $url .= $conditions;
+        
+        $curl = new Curl_Custom();
+        $curl->setUrl($url);
+        $curl->setAuthToken($_COOKIE['AuthKey']);
+        $curl->setHeaders($curl->getAuthToken());
+        $curl->curlGetRequest();
+        
+        return $curl->getData();
+    }
+
+    public
+    function getAnnouncements($conditions = null) 
+    {
+        $url = 'http://localhost:8888/projetcs/REST_ANNONCE_V2/web/announcements/?id_user='.$this->getId();
+        if(!is_null($conditions)) 
+            $url .= $conditions;
+        
+        $curl = new Curl_Custom();
+        $curl->setUrl($url);
+        $curl->setAuthToken($_COOKIE['AuthKey']);
+        $curl->setHeaders($curl->getAuthToken());
+        $curl->curlGetRequest();
+        
+        return $curl->getData();
+    }
+    
+    public 
+    function getUsers($conditions = null) {
+        $url = 'http://localhost:8888/projetcs/REST_ANNONCE_V2/web/users/';
+        if(!is_null($conditions)) 
+            $url .= $conditions;
+        
+        $curl = new Curl_Custom();
+        $curl->setUrl($url);
+        $curl->setAuthToken($_COOKIE['AuthKey']);
+        $curl->setHeaders($curl->getAuthToken());
+        $curl->curlGetRequest();
+        
+        return $curl->getData();
+    }
+    
+    public 
+    function initUserData() 
+    {
+        if($this->getId()) {
+            
+            $curl = new Curl_Custom();
+            $curl->setUrl('http://localhost:8888/projetcs/REST_ANNONCE_V2/web/users/'.$this->getId());
+            $curl->setAuthToken($_COOKIE['AuthKey']);
+            $curl->setHeaders($curl->getAuthToken());
+            $curl->curlGetRequest();
+            $data = XML_Custom::unserialize($curl->getData());
+            $this->setUserData($data);
+            
+        } 
     }
 }

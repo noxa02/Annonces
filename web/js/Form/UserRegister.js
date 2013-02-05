@@ -131,7 +131,7 @@
                 login: datas['login'],
                 password: datas['password'],
                 beforeSend: function (xhr){ 
-                    xhr.setRequestHeader('Authorization', 'Basic '+authKey.get()); 
+                    xhr.setRequestHeader('Authorization', 'Basic '+authKey.getAuthKey()); 
                 },
                 success: function(data) {
                     var options = {

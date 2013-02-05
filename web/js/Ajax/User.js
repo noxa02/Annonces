@@ -1,5 +1,5 @@
 var user = {
-    "init": function(data) {
+    init: function(data) {
         var image = this.getPicture(data);
         var baseUrl = 'http://localhost:8888/projetcs/Annonces/web';
         var content = '';
@@ -22,7 +22,7 @@ var user = {
 
         return content;
     },
-    "getAll": function() {
+    getAll: function() {
         var result; 
         $.ajax({
             type: "GET",
@@ -30,15 +30,100 @@ var user = {
             dataType : 'json',
             async: false, 
             beforeSend: function (xhr){ 
-                xhr.setRequestHeader('Authorization', 'Basic '+authKey.get()); 
+                xhr.setRequestHeader('Authorization', 'Basic '+authKey.getAuthKey()); 
             },
             success: function(data) {
                 result = data;
             }
         });
         return result;
+    },
+    goFollow: function(id_followed, id_follower) {
+        var result = false;
+        console.log($.ajax({
+            type: "POST",
+            url: 'http://localhost:8888/projetcs/REST_ANNONCE_V2/web/users/'+id_followed+'/followers/',
+            data: {
+                'id_user_follower' : id_follower
+            },
+            async: false,
+            beforeSend: function (xhr){ 
+                xhr.setRequestHeader('Authorization', 'Basic '+authKey.getAuthKey()); 
+            },           
+            statusCode: {
+                409: function () {
+                    var options = {
+                        $fadeIn : 300,
+                        $fadeOut : 4000,
+                        $timeOut : 5000,
+                        $extendedTimeOut : 1000
+                    }
+                    notification.clear();
+                    notification.error(
+                    'Aïe un problème est survenu !', 
+                    'Veuillez contacter l\'administrateur du site !', 
+                    options);
+                },
+                201: function() {
+                    result = true;
+                }
+            }
+        }));
+        return result;
+    },
+    unFollow: function(id_followed, id_follower) {
+        result = false;
+        $.ajax({
+            type: "DELETE",
+            url: 'http://localhost:8888/projetcs/REST_ANNONCE_V2/web/users/'+id_followed+'/followers/'+id_follower,
+            async: false,
+            beforeSend: function (xhr){ 
+                xhr.setRequestHeader('Authorization', 'Basic '+authKey.getAuthKey()); 
+            },
+            statusCode : {
+                409: function () {
+                    var options = {
+                        $fadeIn : 300,
+                        $fadeOut : 4000,
+                        $timeOut : 5000,
+                        $extendedTimeOut : 1000
+                    }
+                    notification.clear();
+                    notification.error(
+                    'Aïe un problème est survenu !', 
+                    'Veuillez contacter l\'administrateur du site !', 
+                    options);
+                },
+                200: function() {
+                    result = true;
+                }
+            }
+        });
+        return result;
+    },
+    isFollowedBy: function(id_followed, id_follower) {
+        result = false;
+        $.ajax({
+            type: "GET",
+            url: 'http://localhost:8888/projetcs/REST_ANNONCE_V2/web/users/'+id_followed+'/followers/',
+            dataType: 'json',
+            async: false, 
+            data: {
+                'id_user_follower' : id_follower
+            },
+            beforeSend: function (xhr){ 
+                xhr.setRequestHeader('Authorization', 'Basic '+authKey.getAuthKey()); 
+            },
+            success: function(data) {
+                if(data && data.length) {
+                    result = true;
+                }
+            } 
+        });
+        return result;
     }
 }
+
 var loading = {
     "show": function() {
         $('#loading').html("<img src='http://localhost:8888/projetcs/Annonces/web/images/ajax-loader.gif'/>").fadeIn('fast');

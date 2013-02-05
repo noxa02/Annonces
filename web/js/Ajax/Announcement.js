@@ -13,7 +13,7 @@ var customPagination = {
             }
             ,
             beforeSend: function (xhr){ 
-                xhr.setRequestHeader('Authorization', 'Basic '+authKey.get()); 
+                xhr.setRequestHeader('Authorization', 'Basic '+authKey.getAuthKey()); 
             },
             success: function(data) {
 
@@ -64,7 +64,7 @@ var customPagination = {
 }
 
 var announcement = {
-    "init": function(data) {
+    init: function(data) {
         //var image = this.getPicture(data);
         //var baseUrl = 'http://localhost:8888/projetcs/Annonces/web';
         var baseUrl =  'http://rest.asimpletrade.fr:8086/';
@@ -88,7 +88,7 @@ var announcement = {
 
         return content;
     },
-    "getAll": function() {
+    getAll: function() {
         var result; 
 
         $.ajax({
@@ -99,7 +99,7 @@ var announcement = {
             dataType : 'json',
             async: false, 
             beforeSend: function (xhr){ 
-                xhr.setRequestHeader('Authorization', 'Basic '+authKey.get()); 
+                xhr.setRequestHeader('Authorization', 'Basic '+authKey.getAuthKey()); 
             },
             success: function(data) {
                 result = data;
@@ -108,7 +108,7 @@ var announcement = {
 
         return result;
     }, 
-    "getPicture": function(data) {
+    getPicture: function(data) {
         var content = '';
         $.ajax({
             type: "GET",
@@ -119,7 +119,7 @@ var announcement = {
             dataType : 'json',
             async: false,
             beforeSend: function (xhr){ 
-                xhr.setRequestHeader('Authorization', 'Basic '+authKey.get()); 
+                xhr.setRequestHeader('Authorization', 'Basic '+authKey.getAuthKey()); 
             },
             success: function(data) {
                 if(data != null) {
@@ -136,7 +136,7 @@ var announcement = {
 
         return content;
     },
-    "getWithAuthor": function() {
+    getWithAuthor: function() {
         
     },
     "search-page": function(data) {
@@ -166,11 +166,11 @@ var announcement = {
 }
 
 var loading = {
-    "show": function() {
+    show: function() {
         //$('#loading').html("<img src='http://localhost:8888/projetcs/Annonces/web/images/ajax-loader.gif'/>").fadeIn('fast');
         $('#loading').html("<img src='http://rest.asimpletrade.fr:8086/images/ajax-loader.gif'/>").fadeIn('fast');
     }, 
-    "hide": function () {
+    hide: function () {
         $('#loading').fadeOut();
     }    
 }

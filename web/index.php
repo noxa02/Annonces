@@ -20,7 +20,6 @@
         <script type="text/javascript" src="<?=BASE_URL?>/js/Ajax/User.js"></script>
         <script type="text/javascript" src="<?=BASE_URL?>/js/Ajax/Announcement.js"></script>
         <script type="text/javascript" src="<?=BASE_URL?>/js/Ajax/Search.js"></script>
-        <script type="text/javascript" src="<?=BASE_URL?>/js/Form/UserRegister.js"></script>
     </head>
     <body>
     <?php 

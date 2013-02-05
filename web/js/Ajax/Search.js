@@ -77,7 +77,7 @@
                 dataType: 'json',
                 data: array['data'],
                 beforeSend: function(xhr) {
-                    xhr.setRequestHeader('Authorization', 'Basic '+authKey.get()); 
+                    xhr.setRequestHeader('Authorization', 'Basic '+authKey.getAuthKey()); 
                 },
                 statusCode: {
                     204: function() {

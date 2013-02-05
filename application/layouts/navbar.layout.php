@@ -13,14 +13,14 @@
                     <li><a href="<?=BASE_URL?>/announcements/list">Annonces</a></li>
                     <li><a href="<?=BASE_URL?>/user/register">Inscription</a></li>
                     <li><a href="<?=BASE_URL?>/Common/contact" >Contact</a></li>
-                    <?php if(isset($_SESSION['user']) && !empty($_SESSION['user'])) { ?>
+                    <?php if(isset($_SESSION['user']) && !empty($_SESSION['user'])): ?>
                     <li class="divider-vertical"></li>                          
                     <ul id="account-user" class="nav">
                         <div id="user-picture" class="pull-left">
                             <img class="thumbnail" src="http://placehold.it/50x50" alt="" width="50" height="50">
                         </div>
                         <div class="btn-group pull-left">
-                          <a class="btn" href="#"><i class="icon-user"></i> Mon Compte </a>
+                          <a class="btn" href="<?=BASE_URL?>/user/account/<?=$current_user->getId()?>"><i class="icon-user"></i> Mon Compte </a>
                           <a class="btn dropdown-toggle" data-toggle="dropdown" href=""><span class="caret"></span></a>
                           <ul class="dropdown-menu">
                             <li><a href="javascript:void(0)"><i class="icon-pencil"></i> Modifier mon compte </a></li
@@ -32,7 +32,7 @@
                         </div>
                     </ul>
                     <li class="divider-vertical"></li>
-                    <?php } else { ?>
+                    <?php else : ?>
                     <li>
                     <?php
                         if(isset($layouts['connexion']) && $layouts['connexion']) {
@@ -40,7 +40,7 @@
                         }
                     ?>                       
                     </li>
-                    <?php } ?>
+                    <?php endif ?>
                    </ul>
             </div>
         </div>

@@ -11,6 +11,10 @@
         ini_set('error_log', PATH_ROOT.'/tmp/logs/error.log');
     }
     
+    require_once 'XML/Util.php';
+    require_once 'XML/Serializer.php';
+    require_once 'XML/Unserializer.php';
+    require_once 'PHPUnit.php';
     libxml_use_internal_errors(true);
     
     include_once APPLICATION_PATH.'/library/symphony/functions.php';

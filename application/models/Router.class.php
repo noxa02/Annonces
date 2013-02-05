@@ -19,26 +19,64 @@ class Router {
     function constructRoute() 
     {
         $url = new Url();
-        $this->roadmap = $url->parserUrl();
-        $roadmap = $this->roadmap;
-        $this->folder = (!empty($roadmap)) ? array_shift($roadmap) : null;
-        $folder = $this->folder;
-        cleanArray($this, $folder);
-        $action = (!empty($roadmap)) ? array_shift($roadmap) : null;
+        $args = refreshArrayKeys($url->parserUrl());
+        if(empty($args)) {
+            $this->controller = 'default'; 
+            $this->action = 'index'; 
+        } else {
+            foreach ($args as $key => $value) {
+                switch ($key) {
+                    case 0 : 
+                        if(is_string($value) && !is_integer($value)) {
+                            $this->controller = $value;  
+                        }
+                    break;
+                    case 1 : 
+                        if(is_string($value) && !is_integer($value)) {
+                            $this->action = $value;  
+                        }
+                    break;
+                    case 2 : 
+                        if(preg_match('/^([0-9]+)$/', $value, $matches)) {
+                            $this->id = $value;  
+                        }
+                    break;
+                }
+            }
+        }
         
-        $this->view_path = $this->existView($folder, $action);
-        $this->controller_path = $this->existController($folder, $action);
+        if(!$this->existAction($this->controller, $this->action)
+                && !$this->existController($this->controller, $this->action)) {
+            return false;
+        } else return true;
     }
 
-    function existView($folder, $action) 
+    function existAction($folder, $action) 
     {
-        return (is_readable(APPLICATION_PATH . '/views/'.ucfirst($folder).'/'.$action.'.view.php')) ?
-            APPLICATION_PATH . '/views/'.ucfirst($folder).'/'.$action.'.view.php' : null;
+        if(is_readable(APPLICATION_PATH . '/controllers/'.ucfirst($folder).'/'.strtolower($action).'.controller.php') 
+                && is_readable(APPLICATION_PATH . '/views/'.ucfirst($folder).'/'.strtolower($action).'.view.php')) {
+            return true;
+        }
+            return false;
     }
     
     function existController($folder, $action) 
     {
-        return (is_readable(APPLICATION_PATH . '/controllers/'.ucfirst($folder).'/'.$action.'.controller.php')) ?
-            APPLICATION_PATH . '/controllers/'.ucfirst($folder).'/'.$action.'.controller.php' : null;
+        if(is_readable(APPLICATION_PATH . '/controllers/'.ucfirst($folder).'/'.strtolower($action).'.controller.php')) {
+            return true;
+        }
+            return false;
+    }
+    
+    public
+    function getControllerPath() {
+        if($this->controller && $this->action)
+        return APPLICATION_PATH . '/controllers/'.ucfirst($this->controller).'/'.strtolower($this->action).'.controller.php';
+    }
+    
+    public
+    function getViewPath() {
+        if($this->controller && $this->action)
+        return APPLICATION_PATH . '/views/'.ucfirst($this->controller).'/'.strtolower($this->action).'.view.php';
     }
 }

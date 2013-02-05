@@ -1,13 +1,13 @@
 (function($) {
     $(function() {
+        authKey.initAuthKey();
         $('#submit-connexion').click(function(e) {
             e.preventDefault();
             toastr.clear();
             var username = $('#login-connexion').val();
             var password = $('#password-connexion').val();
             var url = 'http://localhost:8888/projetcs/REST_ANNONCE_V2/web/users/';
-            
-            authKey.set(username, password);
+            authKey.setAuthKey(username, password);
             $.ajax({
                 type: "GET",
                 url: url,
@@ -16,7 +16,7 @@
                   login : username
                 },
                 beforeSend: function (xhr){ 
-                    xhr.setRequestHeader('Authorization', 'Basic '+authKey.get()); 
+                    xhr.setRequestHeader('Authorization', 'Basic '+authKey.getAuthKey()); 
                 },
                 statusCode : {
                     401: function (statusCode) {
@@ -64,6 +64,10 @@
                 }
             });
         });  
+        
+        $('#logout').click(function() {
+            authKey.deleteAuthKey();
+        })
     })
 })(jQuery);
 
@@ -86,18 +90,24 @@
     }
     
     var authKey = {
-        "get": function() {
+        initAuthKey: function() {
             if(!$.cookie('AuthKey')) {
-                this.set('anonym', 'anonym');
+                this.setAuthKey('anonym', 'anonym');
+            } 
+        },
+        getAuthKey: function() {
+            if(!$.cookie('AuthKey')) {
+                this.setAuthKey('anonym', 'anonym');
             }
             return $.cookie('AuthKey');
         },
-        "set": function(username, password) {
+        setAuthKey: function(username, password) {
+            this.deleteAuthKey();
             $.cookie('AuthKey', base64.encode(username + ':' + password));
         },
-        "delete": function() {
+        deleteAuthKey: function() {
             $.cookie('AuthKey', null);
-            if($.cookie(key)) {
+            if($.cookie('AuthKey')) {
                 return true;
             }
             return false;

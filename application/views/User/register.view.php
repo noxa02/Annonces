@@ -94,5 +94,4 @@
         </div>
     </div>
 </div>
-
-        
+<script type="text/javascript" src="<?=BASE_URL?>/js/Form/UserRegister.js"></script>
