@@ -1,19 +1,23 @@
 (function($) {
     $(function() {
+        var array = {'data':{}, 'url':'http://localhost:8888/projetcs/REST_ANNONCE_V2/web/announcements/'};
+        ajaxRequest.setRequest(array);
+        /**
+         * Action when input text are binded
+         */
         var searchTimer = 0;
         $('#search-form input:not([type=checkbox],[type=radio],[type=button],[type=submit])').bind('keyup', function() {
             if (searchTimer != 0) {
               clearTimeout(searchTimer);
             }
-            searchTimer = setTimeout(ajaxRequest.init($(this)), 1000);
-           
+            searchTimer = setTimeout(ajaxRequest.init(), 1000);
         })
         $('#search-form input:not([type=checkbox],[type=radio],[type=button],[type=submit])').bind('change', function() {
-            ajaxRequest.init($(this));
+            ajaxRequest.init();
         })  
-        $('select[name="limit"]').bind('change', function() {
+        $('select[name="limit"],select[name="order-type"], select[name="order-column"]').bind('change', function() {
             if($.cookie('ajaxRequest')) {
-                ajaxRequest.refreshLimit($(this).val());
+                ajaxRequest.refresh();
             }
         })
         $('#search-form input[type=radio]').bind('change',function() {
@@ -29,16 +33,17 @@
 })(jQuery);
 
     var ajaxRequest = {
-        "init": function(input) {
+        "init": function() {
             return function(){
                 searchTimer = 0;
-                var length = input.val().length
                 var array = {'data':{}, 'url':'http://localhost:8888/projetcs/REST_ANNONCE_V2/web/announcements/'};
-                array['data']['limit'] = $('select[name="limit"]').val();
+                /**
+                 * Get input Text value(s)
+                 */
                 $.each($('input:not([type=radio],[type=date])'), function() {
                     column = $(this).attr('data-column');
                     value = $(this).val();
-                    if(column && value) {
+                    if(column && value != '') {
                         array['data'][column] = value;   
                     }
                 })
@@ -62,15 +67,44 @@
                     }
                 })
                 
-                timeOut = setTimeout(function(){
-                    ajaxRequest.send(array);
-                }, 1500);
+                /**
+                 * Get select filter value(s)
+                 */
+                $.each($('select[data-select="filter"]'), function() {
+                    input = $(this);
+                    var key = input.attr('name');
+                    var value = input.val();
+
+                    if(input.attr('name') == 'order-type') {
+                        var column = $('select[name="order-column"]').val();
+                        key = 'order';
+                        value = column+' '+input.val();
+                    } else if(input.attr('name') == 'order-column') {
+                        var type = $('select[name="order-type"]').val();
+                        key = 'order';
+                        value = value+' '+type;
+                    } 
+                    
+                    if(key && value) {
+                         array['data'][key] = value;
+                    }
+                })
+                
+                var cookieRequest = ajaxRequest.getRequest();
+                if(!compare.object(array['data'], cookieRequest['data'])) {
+                    ajaxRequest.setRequest(array);
+                    ajaxRequest.refresh();
+                    timeOut = setTimeout(function(){
+                        ajaxRequest.send(ajaxRequest.getRequest());
+                    }, 1500);
+                }
             }
 
         }, 
         "send": function(array) {
-            this.setRequest(array);
-            
+            /**
+             * If data args is equals to the last search, no need to re-send an ajax request.
+             */
             $.ajax({
                 url: array['url'],
                 type: 'GET',
@@ -97,14 +131,38 @@
 
                 }
             })
+
         },
         "setRequest": function(array) {
-            $.cookie('ajaxRequest', array);
+            $.cookie('ajaxRequest', $.toJSON(array));
         }, 
         "getRequest": function() {
-            return $.cookie('ajaxRequest');
+            return $.evalJSON($.cookie('ajaxRequest'));
         }, 
-        "refreshLimit": function(limit) {
+        "refresh": function() {
             var request = this.getRequest();
+            
+            $.each($('select[data-select="filter"]'), function() {
+                request = checkFilter(request, $(this));
+            })
+            this.send(request);
         }
+    }
+    
+    var checkFilter = function(data, input) {
+        var key = input.attr('name');
+        var value = input.val();
+        
+        if(input.attr('name') == 'order-type') {
+            var column = $('select[name="order-column"]').val();
+            key = 'order';
+            value = column+' '+input.val();
+        } else if(input.attr('name') == 'order-column') {
+            var type = $('select[name="order-type"]').val();
+            key = 'order';
+            value = value+' '+type;
+        }
+        data['data'][key] = value;
+        ajaxRequest.setRequest(data);
+        return data;
     }

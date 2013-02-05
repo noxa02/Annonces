@@ -11,6 +11,7 @@
         <link href="<?=BASE_URL ?>/css/toastr-1.0.2/toastr.css" rel="stylesheet">
         <script type="text/javascript" src="<?=BASE_URL?>/js/jquery.1.8.1.js"></script>
         <script type="text/javascript" src="<?=BASE_URL?>/js/jquery.base64.js"></script>
+        <script type="text/javascript" src="<?=BASE_URL?>/js/jquery.json-2.4.js"></script>
         <script type="text/javascript" src="<?=BASE_URL?>/bootstrap/js/bootstrap.js"></script>
         <script type="text/javascript" src="<?=BASE_URL?>/js/toastr-1.0.2/toastr.js"></script>
         <script type="text/javascript" src="<?=BASE_URL?>/js/notifications.js"></script>
