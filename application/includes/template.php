@@ -1,5 +1,4 @@
-<?php
-
+<?php 
 function print_log($vars) 
 {
     print '<pre>';
@@ -35,6 +34,21 @@ function cleanArray(&$array_, $value_) {
             }
         }
     }
+}
+
+function emptyObjectMethod($object) {
+    $ref = new ReflectionObject($object);
+    $properties = $ref->getProperties();
+    
+    $temp = true;
+    foreach ($properties as $propertie) {
+        $propertie->setAccessible(true);
+        if(!is_null($propertie->getValue($object))) {
+                $temp = false;
+        }
+    }
+    
+    return $temp;
 }
 
 function refreshArrayKeys(Array $array_) {

@@ -7,4 +7,6 @@
       'footer'      => true,
     );
     
-    
+    if(isset($current_user) && $current_user->isAuthentified()) {
+        header('Location:'.BASE_URL);
+    }

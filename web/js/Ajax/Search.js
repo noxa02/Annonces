@@ -41,8 +41,8 @@
                  * Get input Text value(s)
                  */
                 $.each($('input:not([type=radio],[type=date])'), function() {
-                    column = $(this).attr('data-column');
-                    value = $(this).val();
+                    var column = $(this).attr('data-column'),
+                        value  = $(this).val();
                     if(column && value != '') {
                         array['data'][column] = value;   
                     }
@@ -72,15 +72,15 @@
                  */
                 $.each($('select[data-select="filter"]'), function() {
                     input = $(this);
-                    var key = input.attr('name');
-                    var value = input.val();
-
+                    var key = input.attr('name'),
+                        value = input.val(),
+                        column = $('select[name="order-column"]').val(),
+                        type = $('select[name="order-type"]').val();
+                        
                     if(input.attr('name') == 'order-type') {
-                        var column = $('select[name="order-column"]').val();
                         key = 'order';
                         value = column+' '+input.val();
                     } else if(input.attr('name') == 'order-column') {
-                        var type = $('select[name="order-type"]').val();
                         key = 'order';
                         value = value+' '+type;
                     } 
@@ -134,7 +134,8 @@
 
         },
         "setRequest": function(array) {
-            $.cookie('ajaxRequest', $.toJSON(array));
+            if($.cookie('ajaxRequest')) $.removeCookie('ajaxRequest');
+            $.cookie('ajaxRequest', $.toJSON(array), { path: '/' });
         }, 
         "getRequest": function() {
             return $.evalJSON($.cookie('ajaxRequest'));
@@ -150,15 +151,15 @@
     }
     
     var checkFilter = function(data, input) {
-        var key = input.attr('name');
-        var value = input.val();
-        
+        var key = input.attr('name'),
+            value = input.val(),
+            column = $('select[name="order-column"]').val(),
+            type = $('select[name="order-type"]').val();
+            
         if(input.attr('name') == 'order-type') {
-            var column = $('select[name="order-column"]').val();
             key = 'order';
             value = column+' '+input.val();
         } else if(input.attr('name') == 'order-column') {
-            var type = $('select[name="order-type"]').val();
             key = 'order';
             value = value+' '+type;
         }

@@ -7,10 +7,11 @@
         </header>
         <div class="container">          
             <div class="row">
-              <div class="span12">
+              <div id="list-announcements" class="span12">
                 Retrouvez ici les dernières annonces postées par les utilisateurs. <br />
                 <div class="row-fluid padding-top15">
-                    <ul class="thumbnails"></ul>
+                    <div id="loading"></div>
+                    <ul id="content-announcements" class="thumbnails"></ul>
                     <script type="text/javascript">
                     (function($) {
                         $(function() {

@@ -38,7 +38,9 @@
 	font-style:normal;
 	font-weight:normal;
 }
-
+h1,h2,h3,h4,h5,h6 {
+    color: #0d7190;
+}
 #header {
     padding: 50px 0 0 0;
 }
@@ -117,13 +119,13 @@
 .form-connexion .checkbox {
     display: inline;
 }
+hr {
+    width: 100%;
+}
 .clear{
     clear: both;
 }
-.description{
-    margin-left: 290px;
-}
-.date{
+#list-announcements .date{
     font-weight: bold;
     float: right;
     padding-top: 15px;
@@ -158,12 +160,38 @@
     background: -o-linear-gradient(#0d7190,#14b0e1);
     background: linear-gradient(#0d7190,#14b0e1);
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#0d7190, endColorstr=#14b0e1);
-  -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#0d7190, endColorstr=#14b0e1)";
+    -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#0d7190, endColorstr=#14b0e1)";
     height:120px;
 }
 #deroule{
     height:20px;
     background: #0d7190;
+}
+/****ANNOUNCEMENT-DETAIL****/
+#thumbnails  {
+    margin-left: 33px;
+    margin-top: 15px;
+}
+#thumbnails > li {
+    margin: 10px 0 10px 0;
+}
+#form-announcement-comment {
+    text-align: center;
+}
+/****ANNOUNCEMENT-MODIFY****/
+#announcement-modify #form-wrapper {
+    margin: 0 auto;
+    min-width: 540px;
+}
+#announcement-modify .control-label {
+    padding: 0 10px 0 0;
+    text-align: left;
+}
+#announcement-modify .thumbnail img {
+    cursor: default;
+}
+#announcement-modify .thumbnail a.red-cross img {
+    cursor: auto;
 }
 /****USER-ACCOUNT****/
 #account-user {
@@ -191,16 +219,52 @@
     width: 400px;
     height: auto;
 }
-#user-register .control-label {
+#user-register .control-label, 
+#announcement-add .control-label {
     padding: 0 10px 0 0;
     text-align: left;
 }
 #user-register .second .control-label {
     width: 100px;
 }
-#user-register  input[type="text"], textarea, 
+#user-register input[type="text"], textarea, 
 input[type="date"] {
     display: inline-block;
+}
+/****ANNOUNCEMENT-ADD****/
+#announcement-add .span10 {
+    float: none;
+    margin: 0 auto;
+}
+#announcement-add fieldset {
+    height: auto;
+}
+#announcement-add .control-group {
+    margin: 0 auto;
+    margin-bottom: 20px;
+    width: 535px;
+}
+#announcement-add .control-label, 
+#announcement-add .control-label {
+    padding: 0 10px 0 0;
+    text-align: left;
+}
+#announcement-add .second .control-label {
+    width: 100px;
+}
+#announcement-add input[type="text"], textarea, select {
+    width: 350px;
+    display: inline-block;
+}
+#preview, #preview ul {
+    width: 100%;
+    height: auto;
+    display: inline-block;
+    margin: 0 auto;
+}
+#preview ul li {
+    margin: 8px;
+    float:left;
 }
 /****SEARCH****/
 #main.search {

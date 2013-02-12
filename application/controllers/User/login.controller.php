@@ -7,7 +7,7 @@
         $user->setUserData($_POST); 
         $user->destroySessionUser();
         $user->initSessionUser();
-        
+        setcookie('login', $user->getLogin());
         if(isset($_SESSION['user']['login']) && !empty($_SESSION['user']['login'])) {
             print 'ok';
         } else print 'fail';

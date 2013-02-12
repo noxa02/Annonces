@@ -197,9 +197,11 @@ class User {
     public 
     function initSessionUser() 
     {    
-        if(method_exists($this, 'getLogin') && !is_null($this->getLogin())) {
-            $_SESSION['user']['login']   = $this->getLogin();
-            $_SESSION['user']['AuthKey'] = base64_encode($this->getLogin().':'.$this->getPassword());
+        $me = $this;
+        if(method_exists($me, 'getLogin') && !is_null($me->getLogin())) {
+            $_SESSION['user']['id']      = $me->getId();
+            $_SESSION['user']['login']   = $me->getLogin();
+            $_SESSION['user']['AuthKey'] = base64_encode($me->getLogin().':'.$me->getPassword());
         } 
     }
     
@@ -210,84 +212,124 @@ class User {
         }
     }
     
+//    public 
+//    function initUserCookies() {
+//        $me = $this;
+//        if(method_exists($me, 'getLogin') && !is_null($me->getLogin())) {
+//            $_COOKIE['user']['id']      = $me->getId();
+//            $_COOKIE['user']['login']   = $me->getLogin();
+//        } 
+//    }
+    
     public 
     function destroyCookies() 
     {
+        unset($_COOKIE['login']);
+        unset($_COOKIE['ajaxRequest']);
         unset($_COOKIE['AuthKey']);
     }
     
     public
     function getFollowers() 
     {
-        $curl = new Curl_Custom();
-        $curl->setUrl('http://localhost:8888/projetcs/REST_ANNONCE_V2/web/users/'.$this->getId().'/followers');
-        $curl->setAuthToken($_COOKIE['AuthKey']);
-        $curl->setHeaders($curl->getAuthToken());
-        $curl->curlGetRequest();
+        if(isset($_COOKIE['AuthKey']) && !empty($_COOKIE['AuthKey'])) {
+           $me = $this;
+           $curl = new Curl_Custom();
+           $curl->setUrl('http://localhost:8888/projetcs/REST_ANNONCE_V2/web/users/'.$me->getId().'/followers');
+           $curl->setAuthToken($_COOKIE['AuthKey']);
+           $curl->setHeaders($curl->getAuthToken());
+           $curl->curlGetRequest();
 
-        return $curl->getData();
+           return $curl->getData();           
+        }
+
     }
     
     public
     function getComments($conditions = null) 
     {
-        $url = 'http://localhost:8888/projetcs/REST_ANNONCE_V2/web/comments/?id_user='.$this->getId();
-        if(!is_null($conditions)) 
-            $url .= $conditions;
-        
-        $curl = new Curl_Custom();
-        $curl->setUrl($url);
-        $curl->setAuthToken($_COOKIE['AuthKey']);
-        $curl->setHeaders($curl->getAuthToken());
-        $curl->curlGetRequest();
-        
-        return $curl->getData();
+        if(isset($_COOKIE['AuthKey']) && !empty($_COOKIE['AuthKey'])) {
+            $me = $this;
+            $url = 'http://localhost:8888/projetcs/REST_ANNONCE_V2/web/comments/?id_user='.$me->getId();
+            
+            if(!is_null($conditions)) 
+                $url .= $conditions;
+            
+            $curl = new Curl_Custom();
+            $curl->setUrl($url);
+            $curl->setAuthToken($_COOKIE['AuthKey']);
+            $curl->setHeaders($curl->getAuthToken());
+            $curl->curlGetRequest();
+            
+            return $curl->getData(); 
+        }
     }
 
     public
     function getAnnouncements($conditions = null) 
     {
-        $url = 'http://localhost:8888/projetcs/REST_ANNONCE_V2/web/announcements/?id_user='.$this->getId();
-        if(!is_null($conditions)) 
-            $url .= $conditions;
-        
-        $curl = new Curl_Custom();
-        $curl->setUrl($url);
-        $curl->setAuthToken($_COOKIE['AuthKey']);
-        $curl->setHeaders($curl->getAuthToken());
-        $curl->curlGetRequest();
-        
-        return $curl->getData();
+        if(isset($_COOKIE['AuthKey']) && !empty($_COOKIE['AuthKey'])) {
+            $me = $this;
+            $url = 'http://localhost:8888/projetcs/REST_ANNONCE_V2/web/announcements/?id_user='.$me->getId();
+            if(!is_null($conditions)) 
+                $url .= $conditions;
+
+            $curl = new Curl_Custom();
+            $curl->setUrl($url);
+            $curl->setAuthToken($_COOKIE['AuthKey']);
+            $curl->setHeaders($curl->getAuthToken());
+            $curl->curlGetRequest();
+
+            return $curl->getData();
+        }
     }
     
     public 
-    function getUsers($conditions = null) {
-        $url = 'http://localhost:8888/projetcs/REST_ANNONCE_V2/web/users/';
-        if(!is_null($conditions)) 
-            $url .= $conditions;
+    function getUsers($conditions = null) 
+    {
+        if(isset($_COOKIE['AuthKey']) && !empty($_COOKIE['AuthKey'])) {
+            
+            $url = 'http://localhost:8888/projetcs/REST_ANNONCE_V2/web/users/';
+            if(!is_null($conditions)) 
+                $url .= $conditions;
+
+            $curl = new Curl_Custom();
+            $curl->setUrl($url);
+            $curl->setAuthToken($_COOKIE['AuthKey']);
+            $curl->setHeaders($curl->getAuthToken());
+            $curl->curlGetRequest();
+
+            return $curl->getData();    
+        }
         
-        $curl = new Curl_Custom();
-        $curl->setUrl($url);
-        $curl->setAuthToken($_COOKIE['AuthKey']);
-        $curl->setHeaders($curl->getAuthToken());
-        $curl->curlGetRequest();
-        
-        return $curl->getData();
+
     }
     
     public 
     function initUserData() 
     {
-        if($this->getId()) {
-            
-            $curl = new Curl_Custom();
-            $curl->setUrl('http://localhost:8888/projetcs/REST_ANNONCE_V2/web/users/'.$this->getId());
-            $curl->setAuthToken($_COOKIE['AuthKey']);
-            $curl->setHeaders($curl->getAuthToken());
-            $curl->curlGetRequest();
-            $data = XML_Custom::unserialize($curl->getData());
-            $this->setUserData($data);
-            
-        } 
+        if(isset($_COOKIE['AuthKey']) && !empty($_COOKIE['AuthKey'])) {
+            $me = $this;
+            if($me->getId()) {
+
+                $curl = new Curl_Custom();
+                $curl->setUrl('http://localhost:8888/projetcs/REST_ANNONCE_V2/web/users/'.$me->getId());
+                $curl->setAuthToken($_COOKIE['AuthKey']);
+                $curl->setHeaders($curl->getAuthToken());
+                $curl->curlGetRequest();
+                $data = XML_Custom::unserialize($curl->getData());
+                $me->setUserData($data);
+
+            }             
+        }
+    }
+    
+    public 
+    function isAuthentified() 
+    {
+        if(isset($_SESSION['user'])) {
+            return true;
+        }
+        return false;
     }
 }

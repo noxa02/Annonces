@@ -111,28 +111,29 @@ class Comment {
     public 
     function initCommentData() 
     {
-        if($this->getId()) {
+        $me = $this;
+        if($me->getId()) {
             
             $curl = new Curl_Custom();
-            $curl->setUrl('http://localhost:8888/projetcs/REST_ANNONCE_V2/web/comments/'.$this->getId());
+            $curl->setUrl('http://localhost:8888/projetcs/REST_ANNONCE_V2/web/comments/'.$me->getId());
             $curl->setAuthToken($_COOKIE['AuthKey']);
             $curl->setHeaders($curl->getAuthToken());
             $curl->curlGetRequest();
             $data = XML_Custom::unserialize($curl->getData());
-            $this->setCommentData($data);
+            $me->setCommentData($data);
             
-            if(!is_null($this->_id_user)) {
+            if(!is_null($me->_id_user)) {
                 $user = new User();
-                $user->setId($this->getIdUser());
+                $user->setId($me->getIdUser());
                 $user->initUserData();
-                $this->setUser($user);
+                $me->setUser($user);
             }
             
-            if(!is_null($this->_id_announcement)) {
+            if(!is_null($me->_id_announcement)) {
                 $announcement = new Announcement();
-                $announcement->setId($this->getIdAnnouncement());
+                $announcement->setId($me->getIdAnnouncement());
                 $announcement->initAnnouncementData();
-                $this->setUser($announcement);
+                $me->setUser($announcement);
             }
         } 
     }
@@ -154,9 +155,10 @@ class Comment {
     }
     
     public 
-    function initAnnouncement() {
-        
-        $url  = 'http://localhost:8888/projetcs/REST_ANNONCE_V2/web/announcements/'.$this->getIdAnnouncement();
+    function initAnnouncement() 
+    {
+        $me = $this;
+        $url  = 'http://localhost:8888/projetcs/REST_ANNONCE_V2/web/announcements/'.$me->getIdAnnouncement();
         $curl = new Curl_Custom();
         $curl->setUrl($url);
         $curl->setAuthToken($_COOKIE['AuthKey']);
@@ -166,13 +168,14 @@ class Comment {
         
         $announcement = new Announcement();
         $announcement->setAnnouncementData($data);
-        $this->setAnnouncement($announcement);
+        $me->setAnnouncement($announcement);
     }
     
     public 
-    function initUser() {
-        
-        $url  = 'http://localhost:8888/projetcs/REST_ANNONCE_V2/web/users/'.$this->getIdUser();
+    function initUser() 
+    {
+        $me = $this;
+        $url  = 'http://localhost:8888/projetcs/REST_ANNONCE_V2/web/users/'.$me->getIdUser();
         $curl = new Curl_Custom();
         $curl->setUrl($url);
         $curl->setAuthToken($_COOKIE['AuthKey']);
@@ -182,6 +185,6 @@ class Comment {
 
         $user = new User();
         $user->setUserData($data);
-        $this->setUser($user);
+        $me->setUser($user);
     }
 }

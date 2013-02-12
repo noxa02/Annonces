@@ -28,7 +28,7 @@
 
         
 
-      $conditions = '&limit=3';
+      $conditions = '&limit=3&order=id DESC';
       $userComments = XML_Custom::unserialize($user->getComments($conditions));
       if(!is_object($userComments)) {
         foreach ($userComments['comment'] as $key => $comment) {

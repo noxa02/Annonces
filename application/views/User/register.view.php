@@ -86,7 +86,7 @@
                             </label>
                            <div class="control-group center">
                                 <button type="button" id="submit" class="btn btn-primary">S'inscrire</button>
-                            </div>   
+                           </div>   
                         </fieldset>
                     </form>
                 </div>

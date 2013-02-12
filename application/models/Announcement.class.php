@@ -46,6 +46,12 @@ class Announcement {
 	}
 
 	public 
+    function getType()
+	{
+		return $this->_type;
+	}
+    
+	public 
     function getPostDate()
 	{
 		return $this->_post_date;
@@ -100,6 +106,13 @@ class Announcement {
 	}
 
 	public 
+    function setType($type)
+	{
+		$this->_type = $type;
+	}
+
+    
+	public 
     function setPostDate($postDate_)
 	{
 		$this->_post_date = $postDate_;
@@ -139,23 +152,69 @@ class Announcement {
     function initAnnouncementData() 
     {
         if($this->getId()) {
-            
+            $me = $this;
             $curl = new Curl_Custom();
-            $curl->setUrl('http://localhost:8888/projetcs/REST_ANNONCE_V2/web/announcements/'.$this->getId());
+            $curl->setUrl('http://localhost:8888/projetcs/REST_ANNONCE_V2/web/announcements/'.$me->getId());
             $curl->setAuthToken($_COOKIE['AuthKey']);
             $curl->setHeaders($curl->getAuthToken());
             $curl->curlGetRequest();
             $data = XML_Custom::unserialize($curl->getData());
-            $this->setAnnouncementData($data);
+            $me->setAnnouncementData($data);
             
-            if(!is_null($this->_id_user)) {
+            if(!is_null($me->_id_user)) {
                 $user = new User();
-                $user->setId($this->getIdUser());
+                $user->setId($me->getIdUser());
                 $user->initUserData();
-                $this->setUser($user);
+                $me->setUser($user);
             }
             
         } 
+    }
+    
+    public 
+    function initUser() 
+    {
+        $me = $this;
+        $url  = 'http://localhost:8888/projetcs/REST_ANNONCE_V2/web/users/'.$me->getIdUser();
+        $curl = new Curl_Custom();
+        $curl->setUrl($url);
+        $curl->setAuthToken($_COOKIE['AuthKey']);
+        $curl->setHeaders($curl->getAuthToken());
+        $curl->curlGetRequest();
+        $data = XML_Custom::unserialize($curl->getData());
+
+        $user = new User();
+        $user->setUserData($data);
+        $me->setUser($user);
+    }
+    
+    public
+    function initPictures() 
+    {
+        $me = $this;
+        $url = 'http://localhost:8888/projetcs/REST_ANNONCE_V2/web/pictures/?id_announcement='.$me->getId();
+        $curl = new Curl_Custom();
+        $curl->setUrl($url);
+        $curl->setAuthToken($_COOKIE['AuthKey']);
+        $curl->setHeaders($curl->getAuthToken());
+        $curl->curlGetRequest();
+        $data = XML_Custom::unserialize($curl->getData());
+        $pictures = null;
+        if(!is_object($data)) {
+            if(isset($data['picture'][0])) {
+                foreach ($data['picture'] as $key => $picture) {
+                    $announcementPicture =  new Picture();
+                    $announcementPicture->setPictureData($picture);
+                    $pictures[] = $announcementPicture;
+                }  
+            } else {
+                $announcementPicture =  new Picture();
+                $announcementPicture->setPictureData($data['picture']);
+                $pictures[] = $announcementPicture;
+            }
+        }
+        
+        $me->setPictures($pictures);
     }
     
     public
