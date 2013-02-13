@@ -4,7 +4,9 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
         <link rel="icon" type="image/png" href="<?=BASE_URL ?>images/favicon24x24.png" />
-        <title>Petites Annonces</title>
+        <title>
+            <?=DOCUMENT_TITLE?><?php if(isset($document_title)): print $document_title; endif;?>
+        </title>
         <!-- Bootstrap -->
         <link href="<?=BASE_URL ?>/bootstrap/css/bootstrap.css" rel="stylesheet">
         <link href="<?=BASE_URL ?>/css/all.css" rel="stylesheet">

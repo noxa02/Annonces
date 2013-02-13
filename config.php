@@ -23,3 +23,4 @@
     define("UPLOAD_FILES", PATH_ROOT . DS .'data'. DS .'web');
     define('WS_PATH', 'http://localhost:8888/projetcs/REST_ANNONCE_V2/web');
     define('WEBSERVICE_UPLOAD', 'http://localhost:8888/projetcs/REST_ANNONCE_V2/upload/');
+    define('DOCUMENT_TITLE', 'ASimpleTrade');

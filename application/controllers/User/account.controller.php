@@ -13,7 +13,8 @@
         $user = new User();
         $user->setId($router->id);
         $user->initUserData();
-
+        $document_title = ' | Compte de '.$user->getLogin();
+        
         $followersArray = XML_Custom::unserialize($user->getFollowers());
         if(!is_object($followersArray)) {
             if(isset($followersArray['user'][0])) {

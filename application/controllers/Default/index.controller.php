@@ -5,3 +5,5 @@
       'connexion'   => true,
       'footer'      => true,
     );
+    
+    $document_title = ' | Accueil';

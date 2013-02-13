@@ -13,6 +13,7 @@
            $announcement = new Announcement();
            $announcement->setId($_GET['id']);
            $announcement->initAnnouncementData();
+           $document_title = ' | Modifier '.$announcement->getTitle().'-'.$announcement->getId();
            $announcement->initPictures();
            $announcement->initUser();
          

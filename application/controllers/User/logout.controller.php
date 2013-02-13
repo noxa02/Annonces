@@ -4,3 +4,5 @@
         $current_user->destroySessionUser();
         header('Location:'.BASE_URL);
     }
+    
+    $document_title = ' | Déconnexion';

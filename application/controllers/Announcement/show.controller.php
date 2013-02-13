@@ -12,7 +12,7 @@
         $announcement = new Announcement();
         $announcement->setId($_GET['id']);
         $announcement->initAnnouncementData();
-        if($announcement->getTitle() == '') header('Location:'.BASE_URL);
+        $document_title = ' | '.$announcement->getTitle().'-'.$announcement->getId();
         $announcement->initPictures();
         $announcement->initUser();
         $pictures = $announcement->getPictures();

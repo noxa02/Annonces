@@ -6,3 +6,4 @@
       'footer'      => true,
     );
    
+    $document_title = ' | Liste d\'Annonces';

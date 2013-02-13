@@ -19,3 +19,5 @@
             $user = $current_user;
         }
     }
+    
+    $document_title = ' | Modifier '.$user->getLogin();
