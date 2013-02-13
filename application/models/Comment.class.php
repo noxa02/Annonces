@@ -115,7 +115,7 @@ class Comment {
         if($me->getId()) {
             
             $curl = new Curl_Custom();
-            $curl->setUrl('http://localhost:8888/projetcs/REST_ANNONCE_V2/web/comments/'.$me->getId());
+            $curl->setUrl(WS_PATH.'/comments/'.$me->getId());
             $curl->setAuthToken($_COOKIE['AuthKey']);
             $curl->setHeaders($curl->getAuthToken());
             $curl->curlGetRequest();
@@ -141,7 +141,7 @@ class Comment {
     public
     function getComments($conditions = null) 
     {
-        $url = 'http://localhost:8888/projetcs/REST_ANNONCE_V2/web/comments/';
+        $url = WS_PATH.'/comments/';
         if(!is_null($conditions)) 
             $url .= $conditions;
 
@@ -158,7 +158,7 @@ class Comment {
     function initAnnouncement() 
     {
         $me = $this;
-        $url  = 'http://localhost:8888/projetcs/REST_ANNONCE_V2/web/announcements/'.$me->getIdAnnouncement();
+        $url  = WS_PATH.'/announcements/'.$me->getIdAnnouncement();
         $curl = new Curl_Custom();
         $curl->setUrl($url);
         $curl->setAuthToken($_COOKIE['AuthKey']);
@@ -175,7 +175,7 @@ class Comment {
     function initUser() 
     {
         $me = $this;
-        $url  = 'http://localhost:8888/projetcs/REST_ANNONCE_V2/web/users/'.$me->getIdUser();
+        $url  = WS_PATH.'/users/'.$me->getIdUser();
         $curl = new Curl_Custom();
         $curl->setUrl($url);
         $curl->setAuthToken($_COOKIE['AuthKey']);

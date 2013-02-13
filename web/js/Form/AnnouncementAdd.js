@@ -20,15 +20,18 @@
        
         $(formSelector+' #submit').click(function(e) {
             e.preventDefault();
-            inputs = $(formSelector+' input:not([type=checkbox],[type=file],[type=button],[type=submit]),'+
+            inputs = $(formSelector+' input:not([type=checkbox],[type=hidden],[type=file],[type=button],[type=submit]),'+
                        formSelector+' select,'+formSelector+' textarea');
-            var datas = {},
-                isValid = true;
+            var id_user = $('#user-info').attr('data-user-id'),  
+                data = {
+            },
+            
+            isValid = true;
             $.each(inputs, function(key, value) {
-                datas[value.name] =  $.trim(value.value); 
+                data[value.name] =  $.trim(value.value); 
             })
-
-            $.each(datas, function(i, val){
+            data['id_user'] = id_user;
+            $.each(data, function(i, val){
                 if(val == '') {
                     isValid = false; 
                 }
@@ -37,66 +40,22 @@
             /**
              *  Prepare files to send by ajax request
              */
-            if(isValid) {
-                var formdata = false;  
-                if (window.FormData) {  
-                    formdata = new FormData();
-                    if(files.length) {
-                        for (var i = 0, file; file = files[i]; i++) {
-                            if (!file.type.match('image.*')) {
-                                continue;
-                            }
-                            if (formdata) { 
-                                formdata.append('files[]', file);
-                            } 
-                        }
-                    }  
-                }  
-                
-                /**
-                 *  Send pictures to the WebService
-                 */
-                if(formdata) {
-                    return;
-                    $.ajax({
-                        url: WS_PATH+'/pictures',
-                        type: 'POST',
-                        data: formdata,
-                        processData: false,
-                        contentType: false,
-                        success: function (res) {
-                            console.debug(res);
-                        }
-                    });
-                }
-                
+            if(isValid) { 
                 /**
                  *  Send announcement data
                  */
                 $.ajax({
-                    url: 'http://localhost:8888/projetcs/REST_ANNONCE_V2/web/announcements',
+                    url: WS_PATH+'/announcements',
                     type: 'POST',
-                    data: datas,
+                    data: data,
                     beforeSend: function (xhr){ 
                         xhr.setRequestHeader('Authorization', 'Basic '+authKey.getAuthKey()); 
                     },
                     success: function(data) {
-                        var options = {
-                            $position : 'toast-top-center',
-                            $fadeIn : 300,
-                            $fadeOut : 4000,
-                            $timeOut : 5000,
-                            $extendedTimeOut : 1000
-                        }
-                        notification.success(
-                        'Ajout réussie !', 
-                        'Vous allez être redirigé dans 3 secondes vers votre annonce', 
-                        options, function(data) {
-                            var url = 'http://localhost:8888/projetcs/Annonces/web/';
-                            $(this).delay(3000).queue(function() {
-                                $(location).attr('href', url);
-                            })
-                        }, data);
+                        /**
+                         * Upload pictures
+                         */
+                        file.send(data);
                     }
                 })
             /**
@@ -105,11 +64,7 @@
             } else {
                 toastr.clear();
                 var options = {
-                    $position : 'toast-top-right', 
-                    $fadeIn : 300,
-                    $fadeOut : 4000,
-                    $timeOut : 9000,
-                    $extendedTimeOut : 1000
+                    $position : 'toast-top-right'
                 }
                 notification.warning(
                 'Formulaire incomplet !', 
@@ -131,7 +86,6 @@
             files = evt.target.files; 
             if(files.length <= 9) {
                 for (var i = 0, f; f = files[i]; i++) {
-
                   if (!f.type.match('image.*')) {
                     continue;
                   }
@@ -152,17 +106,57 @@
             } else {
                 toastr.clear();
                 var options = {
-                    $position : 'toast-top-center', 
-                    $fadeIn : 300,
-                    $fadeOut : 4000,
-                    $timeOut : 9000,
-                    $extendedTimeOut : 1000
+                    $position : 'toast-top-center'
                 }
                 notification.warning(
                 'Attention !', 
                 'Vous pouvez ajouter seulement 9 photos à votre annoncement !', 
                 options);
             }
+        }, 
+        send: function(id_announcement) {
+        var formdata = false;
+            if (window.FormData) {  
+                formdata = new FormData();
+                if(files && files.length) {
+                    for (var i = 0, file; file = files[i]; i++) {
+                        if (!file.type.match('image.*')) {
+                            continue;
+                        }
+                        if (formdata) {
+                            formdata.append('files[]', file);
+                        } 
+                    }
+                }
+                formdata.append('id_announcement', id_announcement);
+            }
+       
+            if(formdata) {
+                $.ajax({
+                    url: WS_PATH+'/pictures',
+                    type: 'POST',
+                    data: formdata,
+                    processData: false,
+                    contentType: false,
+                    beforeSend: function (xhr){ 
+                        xhr.setRequestHeader('Authorization', 'Basic '+authKey.getAuthKey()); 
+                    },
+                    success: function (data) {
+                        var options = {
+                            $position : 'toast-top-center'
+                        }
+                        notification.success(
+                        'Ajout réussie !', 
+                        'Vous allez être redirigé dans 3 secondes vers votre annonce', 
+                        options, function(data) {
+                            var url = BASE_URL+'/announcement/show/'+id_announcement;
+                            $(this).delay(3000).queue(function() {
+                                $(location).attr('href', url);
+                            })
+                        }, data);
+                    }
+                });
+           }
         }
     }
 })(jQuery);

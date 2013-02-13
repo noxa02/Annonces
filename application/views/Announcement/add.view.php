@@ -46,6 +46,8 @@
                             </div>
                             <div id="preview"></div>
                             <div class="control-group center">
+                                <input  type="hidden" id="user-info" 
+                                        data-user-id="<?=$current_user->getId()?>" />
                                 <button type="button" id="submit" class="btn btn-primary">Ajouter</button>
                             </div>
                         </fieldset>

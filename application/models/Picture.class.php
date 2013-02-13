@@ -177,10 +177,10 @@ class Picture {
     function getResized($width, $height) 
     {
         $me = $this;
-        $url  = 'http://localhost:8888/projetcs/REST_ANNONCE_V2/web/pictures/48/resize';
+        $url  = WS_PATH.'/pictures/'.$me->getId().'/resize';
         $url .= '/?width='.$width.'&height='.$height.'&id_announcement='.$me->getIdAnnouncement();
         $url .= '&extension='.$me->getExtension().'&title='.$me->getTitle();
-       
+
         $curl = new Curl_Custom();
         $curl->setUrl($url);
         $curl->setAuthToken($_COOKIE['AuthKey']);

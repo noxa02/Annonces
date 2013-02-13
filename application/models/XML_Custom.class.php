@@ -11,7 +11,7 @@ class XML_Custom {
         $unserializer = &new XML_Unserializer($options);
         $status = $unserializer->unserialize($xml, false); 
         $data = $unserializer->getUnserializedData();
-        
+
         return $data;
     }
 }

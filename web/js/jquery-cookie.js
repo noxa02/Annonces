@@ -43,12 +43,13 @@
 				var days = options.expires, t = options.expires = new Date();
 				t.setDate(t.getDate() + days);
 			}
-
+            
 			value = config.json ? JSON.stringify(value) : String(value);
 
 			return (document.cookie = [
 				encodeURIComponent(key), '=', config.raw ? value : encodeURIComponent(value),
 				options.expires ? '; expires=' + options.expires.toUTCString() : '', // use expires attribute, max-age is not supported by IE
+                options.expireMinutes ? '; expires=' + options.expireMinutes.toUTCString() : '',
 				options.path    ? '; path=' + options.path : '',
 				options.domain  ? '; domain=' + options.domain : '',
 				options.secure  ? '; secure' : ''

@@ -54,6 +54,7 @@
                             </div>
                             <div id="preview"></div>
                             <div class="control-group center">
+                                <input  type="hidden" data-id-announcement="<?=$announcement->getId()?>" id="announcement-info" />
                                 <button type="button" id="submit" class="btn btn-primary">Ajouter</button>
                             </div>
                         </fieldset>

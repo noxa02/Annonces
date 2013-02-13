@@ -2,7 +2,7 @@
     /**
      * Set the environment application
      */
-    define ('DEVELOPMENT_ENVIRONMENT',true);
+    define ('DEVELOPMENT_ENVIRONMENT', true);
     /**
      * Constants variables to connect the database.
      */
@@ -21,3 +21,5 @@
     define("APPLICATION_PATH", PATH_ROOT . DS .'application');
     define("PUBLIC_PATH", PATH_ROOT . DS .'web');
     define("UPLOAD_FILES", PATH_ROOT . DS .'data'. DS .'web');
+    define('WS_PATH', 'http://localhost:8888/projetcs/REST_ANNONCE_V2/web');
+    define('WEBSERVICE_UPLOAD', 'http://localhost:8888/projetcs/REST_ANNONCE_V2/upload/');

@@ -32,7 +32,6 @@
     </head>
     <body>
     <?php 
-    print_log($_COOKIE);
     if(isset($layouts['navbar']) && $layouts['navbar'])
         require_once APPLICATION_PATH . '/layouts/navbar.layout.php';
     ?>

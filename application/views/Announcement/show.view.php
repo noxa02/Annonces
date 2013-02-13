@@ -5,7 +5,7 @@
                 <h1><?=$announcement->getTitle()?></h1>
                 <h6>
                     <?=$announcement->getSubtitle()?> - Mise en ligne par 
-                    <a href="<?=BASE_URL?>/account/show/<?=$announcement->getUser()->getId()?>">
+                    <a href="<?=BASE_URL?>/user/account/<?=$announcement->getUser()->getId()?>">
                         <?=$announcement->getUser()->getLogin()?>
                     </a>
                     le <?=date("d/m/Y", strtotime($announcement->getPostDate()))?>
@@ -29,10 +29,8 @@
                         </div>
                     </div>
                     <div id="wrapper-comments">
-                        <?php if(isset($comments) && !empty($comments)): ?>
-                            <hr>
-                            <h4 class="blue center">Commentaires</h4>
-                            <ul id="comments-list">
+                        <ul id="comments-list" class="<?php if(!isset($comments)): print 'hide'; endif;?>">
+                            <?php if((isset($comments) && !empty($comments))):?>
                                 <?php foreach($comments as $comment):?>
                                 <li>
                                     <h6>
@@ -45,11 +43,11 @@
                                         <p><?=$comment->getContent()?></p>
                                     <hr />
                                 </li>
-                                <?php endforeach;?>      
-                            </ul>
-                        <?php endif; ?>  
+                                <?php endforeach;?>  
+                            <?php endif;?>
+                        </ul>
                         <div class="add-comment">
-                             <h4 class="blue center">Ajouter un commentaire</h4>
+                             <h4 class="center">Ajouter un commentaire</h4>
                             <form id="form-announcement-comment">
                                 <div class="control-group">
                                     <textarea cols="70" rows="3" name="content" data-type="text"></textarea>
@@ -70,9 +68,14 @@
                             <?=$announcement->getUser()->getLogin()?>
                         </a>
                     </h5>
-                    <a href="#" class="btn btn-primary"><i class="icon-pencil icon-white"></i>&nbsp;Contacter</a>
-                    <a href="#" class="btn btn-primary"><i class="icon-plus-sign icon-white"></i>&nbsp;Postuler</a>
-                    
+<!--                    <a href="javascript:void(0)" class="btn btn-primary">
+                        <i class="icon-pencil icon-white"></i>Contacter
+                    </a>-->
+                    <?php if($announcement->getUser()->getLogin() != $current_user->getLogin()) { ?>
+                    <a href="javascript:void(0)" id="apply" class="btn btn-primary">
+                        <i class="icon-plus-sign icon-white"></i>Postuler
+                    </a>
+                    <?php } ?>
                     <?php if(isset($thumbnailPictures) && !empty($thumbnailPictures)): ?>
                     <ul id="thumbnails" class="thumbnails ">
                         <?php foreach($thumbnailPictures as $thumbnailPicture): ?>

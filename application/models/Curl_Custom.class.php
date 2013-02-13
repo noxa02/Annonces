@@ -32,7 +32,8 @@ class Curl_Custom {
     public
     function setHeaders($authToken) {
         $this->headers = array('Authorization: Basic ' . $authToken,
-        'User-Agent: Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.8.1.3) Gecko/20070309 Firefox/2.0.0.3');
+        'User-Agent: Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.8.1.3) Gecko/20070309 Firefox/2.0.0.3',
+        'Content-Type: text/xml; charset=utf-8');
     }
     
     public
@@ -95,7 +96,7 @@ class Curl_Custom {
         curl_setopt($ch, CURLOPT_POSTFIELDS, $this->getPostFields());
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 
-        $this->setData(utf8_decode(curl_exec ($ch)));
+        $this->setData(curl_exec ($ch));
         curl_close($ch);
     }
     

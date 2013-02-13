@@ -235,7 +235,7 @@ class User {
         if(isset($_COOKIE['AuthKey']) && !empty($_COOKIE['AuthKey'])) {
            $me = $this;
            $curl = new Curl_Custom();
-           $curl->setUrl('http://localhost:8888/projetcs/REST_ANNONCE_V2/web/users/'.$me->getId().'/followers');
+           $curl->setUrl(WS_PATH.'/users/'.$me->getId().'/followers');
            $curl->setAuthToken($_COOKIE['AuthKey']);
            $curl->setHeaders($curl->getAuthToken());
            $curl->curlGetRequest();
@@ -250,7 +250,7 @@ class User {
     {
         if(isset($_COOKIE['AuthKey']) && !empty($_COOKIE['AuthKey'])) {
             $me = $this;
-            $url = 'http://localhost:8888/projetcs/REST_ANNONCE_V2/web/comments/?id_user='.$me->getId();
+            $url = WS_PATH.'/comments/?id_user='.$me->getId();
             
             if(!is_null($conditions)) 
                 $url .= $conditions;
@@ -270,7 +270,7 @@ class User {
     {
         if(isset($_COOKIE['AuthKey']) && !empty($_COOKIE['AuthKey'])) {
             $me = $this;
-            $url = 'http://localhost:8888/projetcs/REST_ANNONCE_V2/web/announcements/?id_user='.$me->getId();
+            $url = WS_PATH.'/announcements/?id_user='.$me->getId();
             if(!is_null($conditions)) 
                 $url .= $conditions;
 
@@ -289,7 +289,7 @@ class User {
     {
         if(isset($_COOKIE['AuthKey']) && !empty($_COOKIE['AuthKey'])) {
             
-            $url = 'http://localhost:8888/projetcs/REST_ANNONCE_V2/web/users/';
+            $url = WS_PATH.'/users/';
             if(!is_null($conditions)) 
                 $url .= $conditions;
 
@@ -313,7 +313,7 @@ class User {
             if($me->getId()) {
 
                 $curl = new Curl_Custom();
-                $curl->setUrl('http://localhost:8888/projetcs/REST_ANNONCE_V2/web/users/'.$me->getId());
+                $curl->setUrl(WS_PATH.'/users/'.$me->getId());
                 $curl->setAuthToken($_COOKIE['AuthKey']);
                 $curl->setHeaders($curl->getAuthToken());
                 $curl->curlGetRequest();

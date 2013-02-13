@@ -26,7 +26,7 @@
                           <a class="btn" href="<?=BASE_URL?>/user/account/<?=$current_user->getId()?>"><i class="icon-user"></i> Mon Compte </a>
                           <a class="btn dropdown-toggle" data-toggle="dropdown" href=""><span class="caret"></span></a>
                           <ul class="dropdown-menu">
-                            <li><a href="javascript:void(0)"><i class="icon-pencil"></i> Modifier mon compte </a></li
+                            <li><a href="<?=BASE_URL?>/user/modify/<?=$current_user->getId()?>"><i class="icon-pencil"></i> Modifier mon compte </a></li
                             <li><a href="javascript:void(0)"><i class="icon-th-list"></i> Mes Annonces </a></li>
                             <li><a href="javascript:void(0)"><i class="icon-eye-open"></i> Mes Trocs </a></li>
                             <li class="divider"></li>

@@ -67,7 +67,7 @@ var checkForm = {
                 input.attr('id', iclass.success['id']);
             } else if(me.val() == '') {
                 clean(me, iclass);
-            } else {
+            } else{
                 me.parent('div.control-group').addClass(iclass.error['class']);
                 me.attr('id', iclass.error['id']);
                 me.after('<span class="help-block">'+message.error[type]+'</span>');
@@ -75,14 +75,10 @@ var checkForm = {
         }  
     },
     message: function() {
-        toastr.clear();
         var options = {
-            $position : 'toast-top-center', 
-            $fadeIn : 300,
-            $fadeOut : 4000,
-            $timeOut : 9000,
-            $extendedTimeOut : 1000
+            $position : 'toast-top-center'
         }
+        toastr.clear();
         notification.info(
         'Formulaire remplie !', 
         'Votre formulaire est correct, appuyer sur le beau bouton bleu afin de finaliser votre inscription !', 
@@ -92,14 +88,10 @@ var checkForm = {
 
 var valid = {
     "message": function() {
-        toastr.clear();
         var options = {
-            $position : 'toast-top-center', 
-            $fadeIn : 300,
-            $fadeOut : 4000,
-            $timeOut : 9000,
-            $extendedTimeOut : 1000
+            $position : 'toast-top-center'
         }
+        toastr.clear();
         notification.info(
         'Formulaire remplie !', 
         'Votre formulaire est correct, appuyer sur le beau bouton bleu afin de finaliser votre inscription !', 

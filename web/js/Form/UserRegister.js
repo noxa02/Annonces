@@ -125,7 +125,7 @@
             })
             
             $.ajax({
-                url: 'http://localhost:8888/projetcs/REST_ANNONCE_V2/web/users',
+                url: WS_PATH+'/users',
                 type: 'POST',
                 data: datas,
                 login: datas['login'],
@@ -135,11 +135,7 @@
                 },
                 success: function(data) {
                     var options = {
-                        $position : 'toast-top-center',
-                        $fadeIn : 300,
-                        $fadeOut : 4000,
-                        $timeOut : 5000,
-                        $extendedTimeOut : 1000
+                        $position : 'toast-top-center'
                     }
                     data = {login: this.login, password: this.password};
                     notification.success(
@@ -180,14 +176,10 @@
             }
         },
         "message": function() {
-            toastr.clear();
             var options = {
-                $position : 'toast-top-center', 
-                $fadeIn : 300,
-                $fadeOut : 4000,
-                $timeOut : 9000,
-                $extendedTimeOut : 1000
+                $position : 'toast-top-center'
             }
+            toastr.clear();
             notification.info(
             'Inscription fini !', 
             'Votre formulaire est correct, appuyer sur le beau bouton bleu afin de finaliser votre inscription !', 

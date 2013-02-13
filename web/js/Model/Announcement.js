@@ -5,8 +5,7 @@ Announcement.prototype.getAll = function (options) {
     var result;
     $.ajax({
         type: "GET",
-        url: 'http://localhost:8888/projetcs/REST_ANNONCE_V2/web/announcements',
-        //url: 'http://rest.asimpletrade.fr:8086/announcements',
+        url: WS_PATH+'/announcements',
         dataType: 'json',
         async: false, 
         data: options || {},
@@ -32,8 +31,7 @@ Announcement.prototype.getSingle = function (options) {
     if(!options && !this.isInitialized()) return false; 
     $.ajax({
         type: "GET",
-        url: 'http://localhost:8888/projetcs/REST_ANNONCE_V2/web/announcements',
-        //url: 'http://rest.asimpletrade.fr:8086/announcements',
+        url: WS_PATH+'/announcements',
         dataType: 'json',
         async: false, 
         data: options || {

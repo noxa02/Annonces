@@ -5,8 +5,7 @@ User.prototype.getAll = function (options) {
     var result;
     $.ajax({
         type: "GET",
-        url: 'http://localhost:8888/projetcs/REST_ANNONCE_V2/web/users',
-        //url: 'http://rest.asimpletrade.fr:8086/users',
+        url: WS_PATH+'/users',
         dataType: 'json',
         async: false, 
         data: options || {},
@@ -27,8 +26,7 @@ User.prototype.getSingle = function (options) {
     if(!options && !this.isInitialized()) return false; 
     $.ajax({
         type: "GET",
-        url: 'http://localhost:8888/projetcs/REST_ANNONCE_V2/web/users',
-        //url: 'http://rest.asimpletrade.fr:8086/users',
+        url: WS_PATH+'/users',
         dataType: 'json',
         async: false, 
         data: options || {

@@ -48,6 +48,13 @@ h1,h2,h3,h4,h5,h6 {
 {
     min-height: 550px;  
 }
+#side {
+    width: 380px;
+    position: absolute;
+    top: 120px;
+    font-size: 71.4%;
+    color: #545454;
+}
 #main
 {
     overflow:auto;
@@ -124,6 +131,12 @@ hr {
 }
 .clear{
     clear: both;
+}
+/****LIST-ANNOUNCEMENTS****/
+#list-announcements #content-announcements > li {
+    display: inline-block;
+    width: 430px;
+    margin: 10px;
 }
 #list-announcements .date{
     font-weight: bold;
@@ -230,6 +243,17 @@ hr {
 #user-register input[type="text"], textarea, 
 input[type="date"] {
     display: inline-block;
+}
+/****SEARCH-FORM****/
+#search-form {
+    background-color: #fcfcfc;
+    position: fixed;
+    width: 380px;
+    z-index: 1;
+    margin-top: 0;
+}
+#search ul > li {
+    margin: 10px;
 }
 /****ANNOUNCEMENT-ADD****/
 #announcement-add .span10 {

@@ -1,6 +1,10 @@
 (function($) {
     $(function() {
-        var array = {'data':{}, 'url':'http://localhost:8888/projetcs/REST_ANNONCE_V2/web/announcements/'};
+        var array = {
+            data : {}, 
+            url  : WS_PATH+'/announcements/'
+        };
+        
         ajaxRequest.setRequest(array);
         /**
          * Action when input text are binded
@@ -35,8 +39,11 @@
     var ajaxRequest = {
         "init": function() {
             return function(){
+                var array = {
+                    data : {}, 
+                    url  : WS_PATH+'/announcements/'
+                }, 
                 searchTimer = 0;
-                var array = {'data':{}, 'url':'http://localhost:8888/projetcs/REST_ANNONCE_V2/web/announcements/'};
                 /**
                  * Get input Text value(s)
                  */
@@ -121,9 +128,11 @@
                 success: function(data) {
                     var html;
                     if(data) {
+                        html += '<ul>';
                         $.each(data, function() {
                             html += announcement.init(this);
                         })
+                        html += '</ul>';
                         $('#search').html(html);   
                     } else {
                        $('#search').html('');

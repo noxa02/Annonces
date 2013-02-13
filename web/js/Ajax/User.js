@@ -26,7 +26,7 @@ var user = {
         var result; 
         $.ajax({
             type: "GET",
-            url: 'http://localhost:8888/projetcs/REST_ANNONCE_V2/web/users',
+            url: WS_PATH+'/users',
             dataType : 'json',
             async: false, 
             beforeSend: function (xhr){ 
@@ -40,9 +40,9 @@ var user = {
     },
     goFollow: function(id_followed, id_follower) {
         var result = false;
-        console.log($.ajax({
+        $.ajax({
             type: "POST",
-            url: 'http://localhost:8888/projetcs/REST_ANNONCE_V2/web/users/'+id_followed+'/followers/',
+            url: WS_PATH+'/users/'+id_followed+'/followers/',
             data: {
                 'id_user_follower' : id_follower
             },
@@ -52,47 +52,35 @@ var user = {
             },           
             statusCode: {
                 409: function () {
-                    var options = {
-                        $fadeIn : 300,
-                        $fadeOut : 4000,
-                        $timeOut : 5000,
-                        $extendedTimeOut : 1000
-                    }
                     notification.clear();
                     notification.error(
                     'Aïe un problème est survenu !', 
                     'Veuillez contacter l\'administrateur du site !', 
-                    options);
+                    {});
                 },
                 201: function() {
                     result = true;
                 }
             }
-        }));
+        });
         return result;
     },
     unFollow: function(id_followed, id_follower) {
         result = false;
         $.ajax({
             type: "DELETE",
-            url: 'http://localhost:8888/projetcs/REST_ANNONCE_V2/web/users/'+id_followed+'/followers/'+id_follower,
+            url: WS_PATH+'/users/'+id_followed+'/followers/'+id_follower,
             async: false,
             beforeSend: function (xhr){ 
                 xhr.setRequestHeader('Authorization', 'Basic '+authKey.getAuthKey()); 
             },
             statusCode : {
                 409: function () {
-                    var options = {
-                        $fadeIn : 300,
-                        $fadeOut : 4000,
-                        $timeOut : 5000,
-                        $extendedTimeOut : 1000
-                    }
                     notification.clear();
                     notification.error(
                     'Aïe un problème est survenu !', 
                     'Veuillez contacter l\'administrateur du site !', 
-                    options);
+                    {});
                 },
                 200: function() {
                     result = true;
@@ -105,7 +93,7 @@ var user = {
         result = false;
         $.ajax({
             type: "GET",
-            url: 'http://localhost:8888/projetcs/REST_ANNONCE_V2/web/users/'+id_followed+'/followers/',
+            url: WS_PATH+'/users/'+id_followed+'/followers/',
             dataType: 'json',
             async: false, 
             data: {

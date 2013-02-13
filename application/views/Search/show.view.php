@@ -1,4 +1,4 @@
-<div class="well sidebar-nav span5 block-search">
+<div id="side" class="sidebar-nav span5 block-search">
     <form method="POST" action="#" id="search-form" class="form-inline">
         <fieldset class="first well">
             <div class="control-group" style="height: 25px;">

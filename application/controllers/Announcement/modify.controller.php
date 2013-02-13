@@ -6,9 +6,7 @@
       'footer'      => true,
     );
     
-    if(isset($current_user) && !$current_user->isAuthentified()) {
-        header('Location:'.BASE_URL);
-    }
+    if(isset($current_user) && !$current_user->isAuthentified()) header('Location:'.BASE_URL);
     
     if($router->id) {
 
@@ -16,9 +14,15 @@
            $announcement->setId($_GET['id']);
            $announcement->initAnnouncementData();
            $announcement->initPictures();
+           $announcement->initUser();
+         
+           /**
+            *  Check if current user is author of this announcement
+            */
+           //if($current_user->getLogin() != $announcement->getUser()->getLogin()) header('Location:'.BASE_URL);
+           
            $pictures = $announcement->getPictures();
            $originalPicturesId = array();
-           
            if(isset($pictures) && !empty($pictures)) {
                
                if(isset($pictures[0]) && !empty($pictures[0])) {

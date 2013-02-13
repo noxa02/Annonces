@@ -3,10 +3,10 @@ var notification = {
     "info": function(title, message, optionsOverride) {
         
         var options = 
-            $fadeIn = optionsOverride.$fadeIn || 700,
-            $fadeOut = optionsOverride.$fadeOut || 500,
-            $timeOut = optionsOverride.$timeOut || 2000,
-            $extendedTimeOut = optionsOverride.$extendedTimeOut || 0;
+            $fadeIn = optionsOverride.$fadeIn || 300,
+            $fadeOut = optionsOverride.$fadeOut || 4000,
+            $timeOut = optionsOverride.$timeOut || 5000,
+            $extendedTimeOut = optionsOverride.$extendedTimeOut || 1000;
 
         toastr.options = {
             positionClass: optionsOverride.$position || 'toast-top-right',
@@ -21,14 +21,14 @@ var notification = {
         toastr.options.timeOut = + $timeOut;
         toastr.options.extendedTimeOut = + $extendedTimeOut;
 
-        toastr.info(message, title, optionsOverride)      
+        toastr.info(message, title, options)      
     },
     "success": function(title, message, optionsOverride, callback, data) {
         var options = 
-            $fadeIn = optionsOverride.$fadeIn || 700,
-            $fadeOut = optionsOverride.$fadeOut || 700,
-            $timeOut = optionsOverride.$timeOut || 2000,
-            $extendedTimeOut = optionsOverride.$extendedTimeOut || 0;
+            $fadeIn = optionsOverride.$fadeIn || 300,
+            $fadeOut = optionsOverride.$fadeOut || 4000,
+            $timeOut = optionsOverride.$timeOut || 5000,
+            $extendedTimeOut = optionsOverride.$extendedTimeOut || 1000;
 
         toastr.options = {
             positionClass: optionsOverride.$position || 'toast-top-right',
@@ -47,12 +47,11 @@ var notification = {
         callback(data);
     },
     "error": function(title, message, optionsOverride) {
-        
         var options = 
-            $fadeIn = optionsOverride.$fadeIn || 700,
-            $fadeOut = optionsOverride.$fadeOut || 700,
-            $timeOut = optionsOverride.$timeOut || 2000,
-            $extendedTimeOut = optionsOverride.$extendedTimeOut || 0;
+            $fadeIn = optionsOverride.$fadeIn || 300,
+            $fadeOut = optionsOverride.$fadeOut || 4000,
+            $timeOut = optionsOverride.$timeOut || 5000,
+            $extendedTimeOut = optionsOverride.$extendedTimeOut || 1000;
 
         toastr.options = {
             positionClass: optionsOverride.$position || 'toast-top-right',
@@ -71,10 +70,10 @@ var notification = {
     },
     "warning": function(title, message, optionsOverride) {
         var options = 
-            $fadeIn = optionsOverride.$fadeIn || 700,
-            $fadeOut = optionsOverride.$fadeOut || 700,
-            $timeOut = optionsOverride.$timeOut || 2000,
-            $extendedTimeOut = optionsOverride.$extendedTimeOut || 0;
+            $fadeIn = optionsOverride.$fadeIn || 300,
+            $fadeOut = optionsOverride.$fadeOut || 4000,
+            $timeOut = optionsOverride.$timeOut || 5000,
+            $extendedTimeOut = optionsOverride.$extendedTimeOut || 1000;
 
         toastr.options = {
             positionClass: optionsOverride.$position || 'toast-top-right',

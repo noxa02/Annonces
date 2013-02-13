@@ -52,6 +52,12 @@ class Announcement {
 	}
     
 	public 
+    function getIdUser()
+	{
+		return $this->_id_user;
+	}
+    
+	public 
     function getPostDate()
 	{
 		return $this->_post_date;
@@ -63,10 +69,6 @@ class Announcement {
 		return $this->_conclued;
 	}
     
-    public 
-    function getIdUser() {
-        return $this->_id_user;
-    }
     
     public 
     function getUser() {
@@ -154,20 +156,12 @@ class Announcement {
         if($this->getId()) {
             $me = $this;
             $curl = new Curl_Custom();
-            $curl->setUrl('http://localhost:8888/projetcs/REST_ANNONCE_V2/web/announcements/'.$me->getId());
+            $curl->setUrl(WS_PATH.'/announcements/'.$me->getId());
             $curl->setAuthToken($_COOKIE['AuthKey']);
             $curl->setHeaders($curl->getAuthToken());
             $curl->curlGetRequest();
             $data = XML_Custom::unserialize($curl->getData());
             $me->setAnnouncementData($data);
-            
-            if(!is_null($me->_id_user)) {
-                $user = new User();
-                $user->setId($me->getIdUser());
-                $user->initUserData();
-                $me->setUser($user);
-            }
-            
         } 
     }
     
@@ -175,14 +169,14 @@ class Announcement {
     function initUser() 
     {
         $me = $this;
-        $url  = 'http://localhost:8888/projetcs/REST_ANNONCE_V2/web/users/'.$me->getIdUser();
+        $url  = WS_PATH.'/users/'.$me->getIdUser();
         $curl = new Curl_Custom();
         $curl->setUrl($url);
         $curl->setAuthToken($_COOKIE['AuthKey']);
         $curl->setHeaders($curl->getAuthToken());
         $curl->curlGetRequest();
         $data = XML_Custom::unserialize($curl->getData());
-
+        
         $user = new User();
         $user->setUserData($data);
         $me->setUser($user);
@@ -192,7 +186,7 @@ class Announcement {
     function initPictures() 
     {
         $me = $this;
-        $url = 'http://localhost:8888/projetcs/REST_ANNONCE_V2/web/pictures/?id_announcement='.$me->getId();
+        $url = WS_PATH.'/pictures/?id_announcement='.$me->getId();
         $curl = new Curl_Custom();
         $curl->setUrl($url);
         $curl->setAuthToken($_COOKIE['AuthKey']);
@@ -220,7 +214,7 @@ class Announcement {
     public
     function getAnnouncements($conditions = null) 
     {
-        $url = 'http://localhost:8888/projetcs/REST_ANNONCE_V2/web/announcements/';
+        $url = WS_PATH.'/announcements/';
         if(!is_null($conditions)) 
             $url .= $conditions;
         
