@@ -135,8 +135,11 @@ hr {
 /****LIST-ANNOUNCEMENTS****/
 #list-announcements #content-announcements > li {
     display: inline-block;
-    width: 430px;
+    width: 415px;
+    float: left;
     margin: 10px;
+    padding: 5px;
+    box-shadow: 0px 3px 0px rgba(0, 0, 0, 0.1);
 }
 #list-announcements .date{
     font-weight: bold;
@@ -146,7 +149,6 @@ hr {
 .announcement-link{
     font-weight: bold;
     float: right;
-    padding-top: 30px;
 }
 .court{
     width: 300px;
@@ -181,6 +183,41 @@ hr {
     background: #0d7190;
 }
 /****ANNOUNCEMENT-DETAIL****/
+#wrapper-announcement-detail {
+    width: 580px;
+}
+#comments-list {
+    margin: 0 auto;
+}
+.entry {
+    margin-top: 20px;
+    padding-bottom: 20px;
+    margin-bottom: 30px;
+    border-bottom: 1px solid #eee;
+}
+.entry .meta {
+    color: #888;
+    font-size: 12px;
+    line-height: 23px;
+    margin: 2px;
+}
+.content h3 span {
+    border-left: 3px solid #f65314;
+    padding-left: 7px;
+    padding-bottom: 5px;
+}
+.content .comment-box {
+    margin: 5px 0px;
+    padding: 10px;
+    background: #fafafa;
+    border: 1px solid #eee;
+}
+.content .cmeta {
+    font-size: 12px;
+}
+.entry p {
+    margin: 5px 0px;
+}
 #thumbnails  {
     margin-left: 33px;
     margin-top: 15px;
@@ -194,7 +231,7 @@ hr {
 /****ANNOUNCEMENT-MODIFY****/
 #announcement-modify #form-wrapper {
     margin: 0 auto;
-    min-width: 540px;
+    width: 540px;
 }
 #announcement-modify .control-label {
     padding: 0 10px 0 0;
@@ -242,6 +279,22 @@ hr {
 }
 #user-register input[type="text"], textarea, 
 input[type="date"] {
+    display: inline-block;
+}
+/****USER-MODIFY****/
+#form-user-modify fieldset {
+    width: 400px;
+    height: auto;
+}
+#form-user-modify .control-label {
+    padding: 0 10px 0 0;
+    text-align: left;
+}
+#form-user-modify .second .control-label {
+    width: 100px;
+}
+#form-user-modify input[type="text"], #form-user-modify textarea, 
+#form-user-modify input[type="date"] {
     display: inline-block;
 }
 /****SEARCH-FORM****/
@@ -320,4 +373,15 @@ input[type="date"] {
 }
 #deroule p{
     color: #ffffff;
+}
+/****LIST-ANNOUNCEMENTS****/
+#content-announcements .details {
+    margin-top: 1em;
+    font-size: .75em;
+}
+#content-announcements > div {
+    margin: 0;
+    margin-bottom: 10px;
+    padding: 0 0 10px 0;
+    box-shadow: 0px 3px 0px rgba(0, 0, 0, 0.1);
 }

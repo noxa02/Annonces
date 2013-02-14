@@ -3,7 +3,7 @@
 <html lang="fr">
     <head>
         <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-        <link rel="icon" type="image/png" href="<?=BASE_URL ?>images/favicon24x24.png" />
+        <link rel="icon" type="image/png" href="<?=BASE_URL ?>/images/favicon24x24.png" />
         <title>
             <?=DOCUMENT_TITLE?><?php if(isset($document_title)): print $document_title; endif;?>
         </title>
@@ -28,8 +28,6 @@
         <script type="text/javascript" src="<?=BASE_URL?>/js/notifications.js"></script>
         <script type="text/javascript" src="<?=BASE_URL?>/js/main.js"></script>
         <script type="text/javascript" src="<?=BASE_URL?>/js/Ajax/User.js"></script>
-        <script type="text/javascript" src="<?=BASE_URL?>/js/Ajax/Announcement.js"></script>
-        <script type="text/javascript" src="<?=BASE_URL?>/js/Ajax/Search.js"></script>
         <script type="text/javascript" src="<?=BASE_URL?>/js/Model/Master.js"></script>
     </head>
     <body>

@@ -31,17 +31,6 @@
                 data['id_user'] = user.val();
                 data['id_announcement'] = announcement.val();
                 
-//                $date = $.each($('#comments-list > li'), function() {
-//                    var me = $(this),
-//                        current_date = $.format.date(new Date(), 'yyyy/MM/dd HH:mm:ss'),
-//                        date = null;
-//                    if(me.find('span.author').text() == authKey.getOwner()) {
-//                        date = $.format.date(new Date(me.find('span.date').text()), 'yyyy/MM/dd HH:mm:ss');
-//                        if(date < current_date) {
-//                            last_comment = datediff(current_date, date, 'minutes');
-//                        }
-//                    }
-//                });
                 /**
                  *  If last comment was posted less of 5 minutes
                  */
@@ -82,20 +71,21 @@
                         $.each(comments, function() {
                             var comment = this,
                                 user = new User().getSingle({id:comment.id_user}),
-                                content;
+                                content = '';
                                 user = (user.length) ? user[0] : null;
                             if(user) {
-                                content  = '<li>'
-                                content += '    <h6>';
-                                content += '        <i class="icon-time"></i> ';
-                                content += '        Par <a href="'+BASE_URL+'/user/account/'+user.id+'">';
-                                content += '                <span class="author">'+user.login+'</span>';
-                                content += '            </a>';
-                                content += '        le <span class="date">'+comment.post_date+'</span>';
-                                content += '    </h6>';
-                                content += '    <p>'+comment.content+'</p><hr/>';
-                                content += '</li>';
-
+                                content += '<li class="comment byuser comment-author-admin bypostauthor even thread-even depth-1">';
+                                content += '    <div class="comment-box">';
+                                content += '        <div class="comment-author">';
+                                content += '            <a href="'+BASE_URL+'/user/account/'+user.id+'"><strong>'+user.login+'</strong></a>';
+                                content += '        </div>'
+                                content += '        <div class="cmeta">'+comment.post_date+'</div>';
+                                content += '        <div class="clearfix"></div>';
+                                content += '            <p>'+comment.content+'</p>';
+                                content += '        <div class="clearfix"></div>';
+                                content += '        <div class="clear"></div>';
+                                content += '    </div>';
+                                content += ' </li>';
                                 html += content;
                             }
                         });

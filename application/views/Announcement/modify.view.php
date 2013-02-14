@@ -7,7 +7,7 @@
         </header>
         <div class="container" id="announcement-modify"> 
             <div class="row">
-                <div class="span10">
+                <div class="span12">
                     <form action="" method="POST" class="form-horizontal" enctype="multipart/form-data" id="form-announcement-modify">
                         <fieldset class="well">
                             <div id="form-wrapper">
@@ -58,9 +58,9 @@
                                 <button type="button" id="submit" class="btn btn-primary">Ajouter</button>
                             </div>
                         </fieldset>
+                        <?php if(isset($thumbnailPictures) && !empty($thumbnailPictures)): ?>
                         <fieldset class="well">
                             <h4>Mes images</h4>
-                            <?php if(isset($thumbnailPictures) && !empty($thumbnailPictures)): ?>
                             <ul id="thumbnails" class="thumbnails ">
                                 <?php foreach($thumbnailPictures as $thumbnailPicture): ?>
                                     <?php if(!emptyObjectMethod($thumbnailPicture)): ?>
@@ -76,8 +76,8 @@
                                     <?php endif; ?>
                                 <?php endforeach; ?>
                             </ul>
-                            <?php endif; ?>
                         </fieldset>
+                        <?php endif; ?>
                     </form>
                 </div>
             </div>

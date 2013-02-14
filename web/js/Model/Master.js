@@ -28,12 +28,12 @@ var User = function() {
 
 var Announcement = function() {
     var me = this;
-    
     me.init = function(data) {
         $.each(data, function(key, value) {
             me[key] = value;
         })
     }
+    return me;
 }
 
 var Comment = function() {

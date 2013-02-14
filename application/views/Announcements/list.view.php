@@ -11,14 +11,7 @@
                 Retrouvez ici les dernières annonces postées par les utilisateurs. <br />
                 <div class="row-fluid padding-top15">
                     <div id="loading"></div>
-                    <ul id="content-announcements" class="thumbnails"></ul>
-                    <script type="text/javascript">
-                    (function($) {
-                        $(function() {
-                            customPagination.init(1, $.cookie('AuthKey'));
-                        })
-                    })(jQuery);
-                    </script>
+                    <div id="content-announcements" class="thumbnails"></div>
                     <div class="pagination pagination-large">
                         <ul id="pagination"></ul>
                     </div>
@@ -28,3 +21,7 @@
         </div>
     </div>
 </div>
+<script type="text/javascript" src="<?=BASE_URL?>/js/Model/User.js"></script>
+<script type="text/javascript" src="<?=BASE_URL?>/js/Model/Announcement.js"></script>
+<script type="text/javascript" src="<?=BASE_URL?>/js/Model/Comment.js"></script>
+<script type="text/javascript" src="<?=BASE_URL?>/js/Ajax/Announcement.js"></script>

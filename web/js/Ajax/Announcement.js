@@ -1,10 +1,16 @@
+(function($) {
+    $(function() {
+        customPagination.init(1, authKey.getAuthKey());
+    })
+})(jQuery);
+
 var customPagination = {
     "init": function(current_page) {
         var config = {
               current_page : current_page,
               limit : 4
         };
-        
+
         loading.show();
         $.ajax({
             type: "GET",
@@ -22,7 +28,7 @@ var customPagination = {
                     page = config.current_page,
                     content = '',
                     html = '';
-                  
+
                 if(data && data.length) {
                     for (var id in data) {
                         if (data.hasOwnProperty(id)) {
@@ -64,22 +70,51 @@ var customPagination = {
     }
 }
 
+var loading = {
+    show: function() {
+        $('#loading').html("<img src='"+BASE_URL+"/images/ajax-loader.gif'/>").fadeIn('fast');
+    }, 
+    hide: function () {
+        $('#loading').fadeOut();
+    }    
+}
 var announcement = {
     init: function(data) {
-        var content = '';
-        content += '<li class="thumbnail">';
-        content += '    <div class="date">';
-        content += '        Date de mise en ligne : '+$.format.date(data.post_date, "dd/MM/yyyy");;
+        var content = '',
+            user = new User().getSingle({id : data.id_user})[0],
+            announcement = data,
+            comment = new Comment().getAll({id_announcement : announcement.id}),
+            countComments = (comment && comment.length) ? comment.length : 0;
+        
+        content += '<div class="span12">';
+        content += '<h4><strong><a href="'+BASE_URL+'/announcement/show/'+data.id+'">'+data.title+'</a></strong></h4>';
+        content += '<div class="row-fluid">';
+        content += '    <div class="post-summary">';
+        content += '        <p>'+data.content+'</p>';
+        content += '        <p><a class="btn btn-mini" href="'+BASE_URL+'/announcement/show/'+data.id+'">Consulter</a></p>';
         content += '    </div>';
-        content += '    <h4>';
-        content += '        <a href="'+BASE_URL+'/announcement/show/'+data.id+'">'+data.title+'</a>';
-        content += '    </h4>';
-        content += '    <h6>'+data.subtitle+'</h6>'
-        content += '    <p class="description">'+data.content+'</p>';
-        content += '    <div class="announcement-link">';
-        content += '        <a href="'+BASE_URL+'/announcement/show/'+data.id+'" class="btn btn-primary">Consulter</a>';
-        content += '    </div>';
-        content += '</li>';
+        content += '</div>';
+        content += '<div class="row-fluid details">';
+        content += '    <i class="icon-user"></i> by <a href="'+BASE_URL+'/user/account/'+user.id+'">'+user.login+'</a> ';
+        content += '    | <i class="icon-calendar"></i> '+$.format.date(data.post_date, "dd/MM/yyyy");
+        content += '    | <i class="icon-comment"></i> <a href="javascript:void(0)"> '+countComments+' commentaires</a>';
+        content += '</div>';
+        content += '</div>';
+
+//        
+//        content += '<li class="thumbnail">';
+//        content += '    <div class="date">';
+//        content += '        Date de mise en ligne : '+$.format.date(data.post_date, "dd/MM/yyyy");;
+//        content += '    </div>';
+//        content += '    <h4>';
+//        content += '        <a href="'+BASE_URL+'/announcement/show/'+data.id+'">'+data.title+'</a>';
+//        content += '    </h4>';
+//        content += '    <h6>'+data.subtitle+'</h6>'
+//        content += '    <p class="description">'+data.content+'</p>';
+//        content += '    <div class="announcement-link">';
+//        content += '        <a href="'+BASE_URL+'/announcement/show/'+data.id+'" class="btn btn-primary">Consulter</a>';
+//        content += '    </div>';
+//        content += '</li>';
 
         return content;
     },
@@ -142,13 +177,4 @@ var announcement = {
 
         return content;
     }
-}
-
-var loading = {
-    show: function() {
-        $('#loading').html("<img src='"+BASE_URL+"/images/ajax-loader.gif'/>").fadeIn('fast');
-    }, 
-    hide: function () {
-        $('#loading').fadeOut();
-    }    
 }

@@ -48,8 +48,9 @@
                  * Get input Text value(s)
                  */
                 $.each($('input:not([type=radio],[type=date])'), function() {
-                    var column = $(this).attr('data-column'),
-                        value  = $(this).val();
+                    var me     = $(this),
+                        column = me.attr('data-column'),
+                        value  = me.val();
                     if(column && value != '') {
                         array['data'][column] = value;   
                     }
@@ -58,9 +59,10 @@
                  * Get input date value(s)
                  */
                 $.each($('input[type=date]'), function() {
-                    id = $(this).attr('id');
-                    column = $(this).attr('data-column');
-                    value = $(this).val();
+                    var me = $(this),
+                        id = me.attr('id'),
+                    column = me.attr('data-column'),
+                    value  = me.val();
                     if(!$(this).is(':disabled') && column && value) {
                         if($('#date-2').is(':disabled')) {
                             array['data'][column] = value;
@@ -71,6 +73,8 @@
                                 array['data'][column+'_end'] = value;
                             }     
                         }   
+                    } else {
+                        array['data'][column][value];
                     }
                 })
                 
@@ -122,22 +126,19 @@
                 },
                 statusCode: {
                     204: function() {
-                        $('#search').html('Aucun résultats.. veuillez modifier votre recherche !');
+                        $('#content-announcements').html('Aucun résultats.. veuillez modifier votre recherche !');
                     }
                 },
                 success: function(data) {
                     var html;
                     if(data) {
-                        html += '<ul>';
                         $.each(data, function() {
                             html += announcement.init(this);
                         })
-                        html += '</ul>';
-                        $('#search').html(html);   
+                        $('#content-announcements').html(html);   
                     } else {
-                       $('#search').html('');
+                       $('#content-announcements').html('');
                     }
-
                 }
             })
 

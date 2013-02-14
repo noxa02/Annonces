@@ -111,7 +111,6 @@
                     $(this).after('<span class="help-block">'+message.error[type]+'</span>');
                 }
             }
-            valid.check();
         })
         
         $('#user-register #submit').click(function(e) {
@@ -139,7 +138,7 @@
                     }
                     data = {login: this.login, password: this.password};
                     notification.success(
-                    'Connexion réussie !', 
+                    'Inscription réussie !', 
                     'Vous allez être redirigé dans 3 secondes', 
                     options, function(data) {
                         $(this).delay(3000).queue(function() {

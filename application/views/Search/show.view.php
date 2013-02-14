@@ -61,10 +61,13 @@
         </header>
         <div id="search">      
             <div id="loading"></div>
-
-            <div class="pagination pagination-large">
-                <ul id="pagination"></ul>
+            <div id="content-announcements" class="pagination pagination-large">
             </div>
         </div>
     </div>
 </div>
+<script type="text/javascript" src="<?=BASE_URL?>/js/Model/User.js"></script>
+<script type="text/javascript" src="<?=BASE_URL?>/js/Model/Announcement.js"></script>
+<script type="text/javascript" src="<?=BASE_URL?>/js/Model/Comment.js"></script>
+<script type="text/javascript" src="<?=BASE_URL?>/js/Ajax/Announcement.js"></script>
+<script type="text/javascript" src="<?=BASE_URL?>/js/Ajax/Search.js"></script>

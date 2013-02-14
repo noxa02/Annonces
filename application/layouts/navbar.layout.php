@@ -9,13 +9,20 @@
             <a class="brand" href="<?=BASE_URL?>"><img src="<?=BASE_URL?>/images/logo_64x64.png" > </a>
             <div class="nav-collapse">
                 <ul class="nav">
-                    <li class="active"><a href="<?=BASE_URL?>"> Accueil </a></li>                  
-                    <li><a href="<?=BASE_URL?>/announcements/list">Annonces</a></li>
-                    <li><a href="<?=BASE_URL?>/search/show">Recherche</a></li>
-                    <?php if(!$current_user->isAuthentified()): ?>
-                    <li><a href="<?=BASE_URL?>/user/register">Inscription</a></li>
+                    <li <?php if(strstr(strstr($_SERVER['REQUEST_URI'], "web", false), "/", false) == "/"){ echo 'class="active"';} ?>>
+                        <a href="<?=BASE_URL?>"> Accueil </a></li>
+                    <?php if($current_user->isAuthentified()): ?>
+                    <li <?php if(strstr(strstr($_SERVER['REQUEST_URI'], "announcements", false), "/", true) == "announcements"){ echo 'class="active"';} ?>>
+                        <a href="<?=BASE_URL?>/announcements/list">Annonces</a></li>
+                    <li <?php if(strstr(strstr($_SERVER['REQUEST_URI'], "search", false), "/", true) == "search"){ echo 'class="active"';} ?>>
+                        <a href="<?=BASE_URL?>/search/show">Recherche</a></li>
                     <?php endif; ?>
-                    <li><a href="<?=BASE_URL?>/Common/contact" >Contact</a></li>
+                    <?php if(!$current_user->isAuthentified()): ?>
+                    <li <?php if(strstr(strstr($_SERVER['REQUEST_URI'], "user", false), "/", true) == "user"){ echo 'class="active"';} ?>>
+                        <a href="<?=BASE_URL?>/user/register">Inscription</a></li>
+                    <?php endif; ?>
+                    <li <?php if(strstr(strstr($_SERVER['REQUEST_URI'], "Common", false), "/", true) == "Common"){ echo 'class="active"';} ?>>
+                        <a href="<?=BASE_URL?>/Common/contact" >Contact</a></li>
                     <?php if($current_user->isAuthentified()): ?>
                     <li class="divider-vertical"></li>                          
                     <ul id="account-user" class="nav">
@@ -26,11 +33,32 @@
                           <a class="btn" href="<?=BASE_URL?>/user/account/<?=$current_user->getId()?>"><i class="icon-user"></i> Mon Compte </a>
                           <a class="btn dropdown-toggle" data-toggle="dropdown" href=""><span class="caret"></span></a>
                           <ul class="dropdown-menu">
-                            <li><a href="<?=BASE_URL?>/user/modify/<?=$current_user->getId()?>"><i class="icon-pencil"></i> Modifier mon compte </a></li
-                            <li><a href="javascript:void(0)"><i class="icon-th-list"></i> Mes Annonces </a></li>
-                            <li><a href="javascript:void(0)"><i class="icon-eye-open"></i> Mes Trocs </a></li>
+                            <li>
+                                <a href="<?=BASE_URL?>/user/modify/<?=$current_user->getId()?>">
+                                    <i class="icon-edit"></i> Modifier mon compte 
+                                </a>
+                            </li>
+                            <li>
+                                <a href="<?=BASE_URL?>/announcement/add">
+                                    <i class="icon-pencil"></i> Ajouter une annonce 
+                                </a>
+                            </li>
+                            <li>
+                                <a href="<?=BASE_URL?>/user/announcements">
+                                    <i class="icon-th-list"></i> Mes Annonces 
+                                </a>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0)">
+                                    <i class="icon-eye-open"></i> Mes Trocs
+                                </a>
+                            </li>
                             <li class="divider"></li>
-                            <li><a id="logout" href="<?=BASE_URL?>/user/logout"><i class="icon-off"></i> Se deconnecter </a></li>
+                            <li>
+                                <a id="logout" href="<?=BASE_URL?>/user/logout">
+                                    <i class="icon-off"></i> Se deconnecter 
+                                </a>
+                            </li>
                           </ul>
                         </div>
                     </ul>

@@ -103,8 +103,11 @@ var user = {
                 xhr.setRequestHeader('Authorization', 'Basic '+authKey.getAuthKey()); 
             },
             success: function(data) {
+
                 if(data && data.length) {
-                    result = true;
+                    $.each(data, function(key, value) {
+                        if(value.id == id_follower) result = true;
+                    });
                 }
             } 
         });

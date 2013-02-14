@@ -13,6 +13,7 @@
            $announcement = new Announcement();
            $announcement->setId($_GET['id']);
            $announcement->initAnnouncementData();
+           if($announcement->getIdUser() != $current_user->getId()) header('Location:'.BASE_URL);
            $document_title = ' | Modifier '.$announcement->getTitle().'-'.$announcement->getId();
            $announcement->initPictures();
            $announcement->initUser();
